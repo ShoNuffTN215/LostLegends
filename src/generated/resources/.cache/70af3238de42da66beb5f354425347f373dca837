@@ -1,0 +1,6 @@
+// 1.20.1	2025-04-19T02:31:02.1885467	Block Tags
+6410298e0e6761e8d72f924c0543bf173bbdac03 data/lostlegends/tags/blocks/metal_detector_valuables.json
+4527d2061eac28d2b501aa0c7a62147b77a52cf0 data/minecraft/tags/blocks/mineable/pickaxe.json
+cbe025c8932bc2274b6fda8651fb910857ed2d47 data/minecraft/tags/blocks/needs_diamond_tool.json
+a5a51166ffb60e312e731a8ee1eba1ed4506b019 data/minecraft/tags/blocks/needs_iron_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/blocks/needs_stone_tool.json

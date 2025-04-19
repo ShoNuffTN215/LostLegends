@@ -1,0 +1,5 @@
+// 1.20.1	2025-04-19T02:31:02.1895629	Loot Tables
+c6070c8edd10186199a39fa5a2ac1e325921180b data/lostlegends/loot_tables/blocks/raw_unobtanium_block.json
+ef8c1ce88d724d9260a9c6a0f5549ca80289c378 data/lostlegends/loot_tables/blocks/sound_block.json
+d2e523f84667af9e84e5050b63b281b9a02d944a data/lostlegends/loot_tables/blocks/unobtanium_block.json
+37d7c0215609d3d1182cb69ebc045b2e0c270f72 data/lostlegends/loot_tables/blocks/unobtanium_ore.json

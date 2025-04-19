@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:unobtanium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostlegends:unobtanium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_unobtanium",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:unobtanium"
+    ]
+  },
+  "sends_telemetry_event": false
+}

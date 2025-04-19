@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:unobtanium_from_blasting_unobtanium_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtanium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostlegends:unobtanium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_unobtanium_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:unobtanium_from_blasting_unobtanium_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}
