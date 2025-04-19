@@ -1,5 +1,8 @@
 {
   "values": [
-    "lostlegends:sound_block"
+    "lostlegends:sound_block",
+    "lostlegends:sculk_brick",
+    "lostlegends:sculk_brick_stairs",
+    "lostlegends:sculk_brick_slab"
   ]
 }

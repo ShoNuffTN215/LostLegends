@@ -5,6 +5,8 @@
 
   "item.lostlegends.metal_detector": "Unobtanium Detector",
   "item.lostlegends.lightning_staff": "Lightning Staff",
+  "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
+  "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
 
   "item.lostlegends.sculkberry": "Sculkberry",
 
@@ -13,6 +15,9 @@
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",
   "block.lostlegends.unobtanium_ore": "Unobtanium Ore",
+  "block.lostlegends.sculk_brick": "Sculk Brick",
+  "block.lostlegends.sculk_brick_stairs": "Sculk Brick Stairs",
+  "block.lostlegends.sculk_brick_slab": "Sculk Brick Slab",
 
   "block.lostlegends.sound_block": "Sound Block",
 

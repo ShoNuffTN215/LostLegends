@@ -36,7 +36,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.SOUND_BLOCK.get());
+                .add(ModBlocks.SOUND_BLOCK.get())
+                .add(ModBlocks.SCULK_BRICK.get())
+                .add(ModBlocks.SCULK_BRICK_STAIRS.get())
+                .add(ModBlocks.SCULK_BRICK_SLAB.get());
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.UNOBTANIUM_BLOCK.get(),

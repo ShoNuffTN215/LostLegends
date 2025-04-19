@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lostlegends:block/sculk_brick_slab"
+    },
+    "type=double": {
+      "model": "lostlegends:block/sculk_brick"
+    },
+    "type=top": {
+      "model": "lostlegends:block/sculk_brick_slab_top"
+    }
+  }
+}

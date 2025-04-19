@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "lostlegends:sculk_brick"
+    }
+  },
+  "pattern": [
+    "   ",
+    "   ",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "item": "lostlegends:sculk_brick_slab"
+  },
+  "show_notification": true
+}

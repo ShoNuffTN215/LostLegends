@@ -22,9 +22,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.UNOBTANIUM_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_UNOBTANIUM_BLOCK.get());
         this.dropSelf(ModBlocks.SOUND_BLOCK.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_STAIRS.get());
+
 
         this.add(ModBlocks.UNOBTANIUM_ORE.get(),
                 block -> createOreDrop(ModBlocks.UNOBTANIUM_ORE.get(), ModItems.RAW_UNOBTANIUM.get()));
+
+        this.add(ModBlocks.SCULK_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SCULK_BRICK_SLAB.get()));
 
 
     }

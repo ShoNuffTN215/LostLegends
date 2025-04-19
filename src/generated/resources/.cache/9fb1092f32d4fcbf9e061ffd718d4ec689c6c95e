@@ -1,5 +1,7 @@
-// 1.20.1	2025-04-19T02:39:25.1604569	Recipes
+// 1.20.1	2025-04-19T03:54:44.5578219	Recipes
 55d63e88a4fc158a4f7a9f4451aff330efbda87b data/lostlegends/advancements/recipes/misc/raw_unobtanium_block.json
+e7f064a67104ee728804d05034504853a9bc1443 data/lostlegends/advancements/recipes/misc/sculk_brick_slab.json
+700f5100cc1810e1a9a6ab5148a7bf62407154ed data/lostlegends/advancements/recipes/misc/sculk_brick_stairs.json
 3c53123fbec3865c7bc7c8cc0ed6014f86ad4f7f data/lostlegends/advancements/recipes/misc/unobtanium.json
 9b1906232b0acb686709d2224183d193266a8f0e data/lostlegends/advancements/recipes/misc/unobtanium_block.json
 7fbb4fd5211288a35e0c45f9a1fc23a94ac3a955 data/lostlegends/advancements/recipes/misc/unobtanium_from_blasting_raw_unobtanium.json
@@ -7,6 +9,8 @@ e88056f221372a04f6dd68db7aeafddcf1f51a11 data/lostlegends/advancements/recipes/m
 06bfa006964632650a7f34c1f5ab6884ce1b2755 data/lostlegends/advancements/recipes/misc/unobtanium_from_smelting_raw_unobtanium.json
 522da42ae3bc7f4a6e66ff85b53fc9fbc724f5ff data/lostlegends/advancements/recipes/misc/unobtanium_from_smelting_unobtanium_ore.json
 24757bc897137ff1896360c5ada85b0a696bcce9 data/lostlegends/recipes/raw_unobtanium_block.json
+6c84b2c443a5ac6b92c7bbf52a53d5ff887bc558 data/lostlegends/recipes/sculk_brick_slab.json
+4211633571175f38e93d3e44e07b1c82614ff2d6 data/lostlegends/recipes/sculk_brick_stairs.json
 a6b4f218843b0a4f8a46ae7ec6fa361fdb7e084d data/lostlegends/recipes/unobtanium.json
 a6dd0eaef03e33e68660ea6e65eb3e2db56c1a28 data/lostlegends/recipes/unobtanium_block.json
 d2bb664930c607db9bc75e7aaf86d7925d40dded data/lostlegends/recipes/unobtanium_from_blasting_raw_unobtanium.json

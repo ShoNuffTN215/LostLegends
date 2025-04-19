@@ -8,6 +8,7 @@ import net.minecraft.world.level.BlockCollisions;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -26,6 +27,15 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> RAW_UNOBTANIUM_BLOCK = registerBlock("raw_unobtanium_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).sound(SoundType.AMETHYST)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SCULK_BRICK = registerBlock("sculk_brick",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_STAIRS)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SCULK_BRICK_STAIRS = registerBlock("sculk_brick_stairs",
+            () -> new StairBlock(() -> ModBlocks.SCULK_BRICK.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SCULK_BRICK_SLAB = registerBlock("sculk_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_SLAB)
                     .requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> UNOBTANIUM_ORE = registerBlock("unobtanium_ore",

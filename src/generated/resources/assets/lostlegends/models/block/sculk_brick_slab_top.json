@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "lostlegends:block/sculk_brick",
+    "side": "lostlegends:block/sculk_brick",
+    "top": "lostlegends:block/sculk_brick"
+  }
+}

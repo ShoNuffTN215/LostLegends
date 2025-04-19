@@ -37,6 +37,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.RAW_UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_ORE.get());
+                        output.accept(ModBlocks.SCULK_BRICK.get());
+                        output.accept(ModBlocks.SCULK_BRICK_STAIRS.get());
+                        output.accept(ModBlocks.SCULK_BRICK_SLAB.get());
 
                         // Functional Blocks
                         output.accept(ModBlocks.SOUND_BLOCK.get());
@@ -49,6 +52,8 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.FATE_CORE.get()))
                     .title(Component.translatable("creativetab.lost_legends_tab")).displayItems((displayParameters, output) -> {
                         output.accept(ModItems.FATE_CORE.get());
+                        output.accept(ModItems.UNBREAKABLES_GAUNTLET.get());
+                        output.accept(ModItems.DEVOURERS_PUSTULE.get());
 
 
                     }).build());

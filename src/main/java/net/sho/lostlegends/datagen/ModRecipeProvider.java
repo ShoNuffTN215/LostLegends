@@ -50,6 +50,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .of(ModItems.RAW_UNOBTANIUM.get()).build()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SCULK_BRICK_STAIRS.get(), 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .define('A', ModBlocks.SCULK_BRICK.get())
+                .unlockedBy("has_sculk_brick", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(ModBlocks.SCULK_BRICK.get()).build()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SCULK_BRICK_SLAB.get(), 6)
+                .pattern("   ")
+                .pattern("   ")
+                .pattern("AAA")
+                .define('A', ModBlocks.SCULK_BRICK.get())
+                .unlockedBy("has_sculk_brick", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(ModBlocks.SCULK_BRICK.get()).build()))
+                .save(pWriter);
+
         oreSmelting(pWriter, UNOBTANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.UNOBTANIUM.get(), 10, 200, "unobtanium");
         oreBlasting(pWriter, UNOBTANIUM_SMELTABLES, RecipeCategory.MISC, ModItems.UNOBTANIUM.get(), 10, 200, "unobtanium");
     }
