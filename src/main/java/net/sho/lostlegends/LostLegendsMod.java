@@ -17,6 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.sho.lostlegends.block.ModBlocks;
+import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import org.slf4j.Logger;
 
@@ -31,6 +32,7 @@ public class LostLegendsMod {
     public LostLegendsMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -58,11 +60,7 @@ public class LostLegendsMod {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.FATE_CORE);
-            event.accept(ModItems.UNOBTANIUM);
-            event.accept(ModItems.RAW_UNOBTANIUM);
-        }
+
     }
 
     @SubscribeEvent
