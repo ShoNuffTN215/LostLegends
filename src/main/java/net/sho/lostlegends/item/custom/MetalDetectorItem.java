@@ -60,7 +60,7 @@ public class MetalDetectorItem extends Item {
     }
 
     private void outputNoValuableFound(Player player) {
-        player.sendSystemMessage(Component.translatable("tooltip.lostlegends.metal_detector_tooltip.shift"));
+        player.sendSystemMessage(Component.translatable("No valuables found"));
     }
 
     private void outputValuableCoordinates(BlockPos below, Player player, Block block) {
