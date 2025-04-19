@@ -1,19 +1,18 @@
 package net.sho.lostlegends.block;
 
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockCollisions;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
+import net.sho.lostlegends.block.custom.SoundBlock;
 import net.sho.lostlegends.item.ModItems;
 
 import java.util.function.Supplier;
@@ -33,9 +32,8 @@ public class ModBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).sound(SoundType.AMETHYST)
                     .strength(5f).requiresCorrectToolForDrops(), UniformInt.of(10, 20)));
 
-
-
-
+    public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
+            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
 
 
 

@@ -28,6 +28,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_ORE.get());
 
+                        output.accept(ModBlocks.SOUND_BLOCK.get());
+
 
 
                     }).build());
