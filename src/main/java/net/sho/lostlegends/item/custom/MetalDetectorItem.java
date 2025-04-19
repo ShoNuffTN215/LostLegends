@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sho.lostlegends.block.ModBlocks;
+import net.sho.lostlegends.util.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.List;
