@@ -7,6 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
+import net.sho.lostlegends.item.custom.FuelItem;
+import net.sho.lostlegends.item.custom.LightningStaffItem;
 import net.sho.lostlegends.item.custom.MetalDetectorItem;
 
 public class ModItems {
@@ -22,6 +24,14 @@ public class ModItems {
 
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHTNING_STAFF = ITEMS.register("lightning_staff",
+            LightningStaffItem::new);
+
+    public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.SCULKBERRY)));
+
+    public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
+            () -> new FuelItem(new Item.Properties(), 2000));
 
 
     public static void register(IEventBus eventBus) {

@@ -4,12 +4,20 @@
   "item.lostlegends.raw_unobtanium": "Raw Unobtanium",
 
   "item.lostlegends.metal_detector": "Unobtanium Detector",
+  "item.lostlegends.lightning_staff": "Lightning Staff",
+
+  "item.lostlegends.sculkberry": "Sculkberry",
+
+  "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",
   "block.lostlegends.unobtanium_ore": "Unobtanium Ore",
 
   "block.lostlegends.sound_block": "Sound Block",
+
+  "tooltip.lostlegends.metal_detector_tooltip.shift": "Locates valuables underground",
+  "tooltip.lostlegends.lightning_staff_tooltip.shift": "Summons lightning at the user's will",
 
   "creativetab.unobtanium_tab": "Unobtanium",
   "creativetab.lost_legends_tab": "Lost Legends"

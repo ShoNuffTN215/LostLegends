@@ -53,8 +53,14 @@ public class MetalDetectorItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.lostlegends.metal_detector_tooltip.shift"));
+        super.appendHoverText(stack, level, tooltip, flag);
+    }
+
     private void outputNoValuableFound(Player player) {
-        player.sendSystemMessage(Component.translatable("No valuables found"));
+        player.sendSystemMessage(Component.translatable("tooltip.lostlegends.metal_detector_tooltip.shift"));
     }
 
     private void outputValuableCoordinates(BlockPos below, Player player, Block block) {

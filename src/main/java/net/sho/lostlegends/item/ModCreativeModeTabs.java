@@ -19,15 +19,26 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.UNOBTANIUM.get()))
                     .title(Component.translatable("creativetab.unobtanium_tab"))
                     .displayItems((displayParameters, output) -> {
+                        // Normal items
                         output.accept(ModItems.UNOBTANIUM.get());
                         output.accept(ModItems.RAW_UNOBTANIUM.get());
 
+                        // Functional items
                         output.accept(ModItems.METAL_DETECTOR.get());
+                        output.accept(ModItems.LIGHTNING_STAFF.get());
 
+                        // Food Items
+                        output.accept(ModItems.SCULKBERRY.get());
+
+                        // Fuel Items
+                        output.accept(ModItems.UNOBTANIUM_WASTE.get());
+
+                        // Block Items
                         output.accept(ModBlocks.RAW_UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_ORE.get());
 
+                        // Functional Blocks
                         output.accept(ModBlocks.SOUND_BLOCK.get());
 
 
