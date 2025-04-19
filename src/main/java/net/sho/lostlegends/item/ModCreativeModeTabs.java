@@ -22,9 +22,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UNOBTANIUM.get());
                         output.accept(ModItems.RAW_UNOBTANIUM.get());
 
+                        output.accept(ModItems.METAL_DETECTOR.get());
+
                         output.accept(ModBlocks.RAW_UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_BLOCK.get());
                         output.accept(ModBlocks.UNOBTANIUM_ORE.get());
+
 
 
                     }).build());
