@@ -1,11 +1,13 @@
 package net.sho.lostlegends.item;
 
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
+import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.item.custom.*;
 
 public class ModItems {
@@ -37,6 +39,9 @@ public class ModItems {
     public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SCULKBERRY)));
 
+    public static final RegistryObject<Item> COBBLESTONE_GOLEM_SPAWN_EGG = ITEMS.register("cobblestone_golem_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.COBBLESTONE_GOLEM, 0x7e9680, 0xc5d1c5, new Item.Properties()));
+
     public static final RegistryObject<Item> UNOBTANIUM_KATANA = ITEMS.register("unobtanium_katana",
             () -> new SwordItem(ModToolTiers.UNOBTANIUM, 100, 10, new Item.Properties()));
     public static final RegistryObject<Item> UNOBTANIUM_PICKAXE = ITEMS.register("unobtanium_pickaxe",
@@ -49,6 +54,17 @@ public class ModItems {
             () -> new HoeItem(ModToolTiers.UNOBTANIUM, 10, 10, new Item.Properties()));
     public static final RegistryObject<Item> UNOBTANIUM_PAXEL = ITEMS.register("unobtanium_paxel",
             () -> new PaxelItem(ModToolTiers.UNOBTANIUM, 80, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_HAMMER = ITEMS.register("unobtanium_hammer",
+            () -> new HammerItem(ModToolTiers.UNOBTANIUM, 40, 10, new Item.Properties()));
+
+    public static final RegistryObject<Item> UNOBTANIUM_HELMET = ITEMS.register("unobtanium_helmet",
+            () -> new ArmorItem(ModArmorMaterials.UNOBTANIUM, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_CHESTPLATE = ITEMS.register("unobtanium_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.UNOBTANIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_LEGGING = ITEMS.register("unobtanium_leggings",
+            () -> new ArmorItem(ModArmorMaterials.UNOBTANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_BOOTS = ITEMS.register("unobtanium_boots",
+            () -> new ArmorItem(ModArmorMaterials.UNOBTANIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));

@@ -26,7 +26,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.SCULKBERRY);
 
-        simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.LIGHTNING_STAFF);
 
         handheldItem(ModItems.UNOBTANIUM_PICKAXE);
@@ -34,14 +33,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.UNOBTANIUM_SHOVEL);
         handheldItem(ModItems.UNOBTANIUM_HOE);
         handheldItem(ModItems.UNOBTANIUM_PAXEL);
+        handheldItem(ModItems.UNOBTANIUM_HAMMER);
 
         simpleItem(ModItems.UNOBTANIUM_WASTE);
+
+        simpleItem(ModItems.UNOBTANIUM_HELMET);
+        simpleItem(ModItems.UNOBTANIUM_CHESTPLATE);
+        simpleItem(ModItems.UNOBTANIUM_LEGGING);
+        simpleItem(ModItems.UNOBTANIUM_BOOTS);
 
         buttonItem(ModBlocks.SCULK_BRICK_BUTTON, ModBlocks.SCULK_BRICK);
         fenceItem(ModBlocks.SCULK_BRICK_FENCE, ModBlocks.SCULK_BRICK);
         wallItem(ModBlocks.SCULK_BRICK_WALL, ModBlocks.SCULK_BRICK);
 
         simpleBlockItem(ModBlocks.SCULK_BRICK_DOOR);
+
+        withExistingParent(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

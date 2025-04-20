@@ -1,6 +1,7 @@
 package net.sho.lostlegends;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,6 +18,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.sho.lostlegends.block.ModBlocks;
+import net.sho.lostlegends.entity.ModEntities;
+import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import org.slf4j.Logger;
@@ -38,6 +41,7 @@ public class LostLegendsMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -75,6 +79,10 @@ public class LostLegendsMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                EntityRenderers.register(ModEntities.COBBLESTONE_GOLEM.get(), CobblestoneGolemRenderer::new);
+
+        });
 
         }
     }

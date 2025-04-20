@@ -10,6 +10,8 @@
 
   "item.lostlegends.sculkberry": "Sculkberry",
 
+  "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
+
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 
   "item.lostlegends.unobtanium_katana": "Unobtanium Katana",
@@ -18,6 +20,12 @@
   "item.lostlegends.unobtanium_shovel": "Unobtanium Shovel",
   "item.lostlegends.unobtanium_hoe": "Unobtanium Hoe",
   "item.lostlegends.unobtanium_paxel": "Unobtanium Paxel",
+  "item.lostlegends.unobtanium_hammer": "Unobtanium Hammer",
+
+  "item.lostlegends.unobtanium_helmet": "Unobtanium Hammer",
+  "item.lostlegends.unobtanium_chestplate": "Unobtanium Chestplate",
+  "item.lostlegends.unobtanium_leggings": "Unobtanium Leggings",
+  "item.lostlegends.unobtanium_boots": "Unobtanium Boots",
 
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",

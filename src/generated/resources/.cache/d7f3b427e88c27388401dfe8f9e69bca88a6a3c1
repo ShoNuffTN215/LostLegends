@@ -1,7 +1,7 @@
-// 1.20.1	2025-04-20T01:35:22.2464629	Item Models: lostlegends
+// 1.20.1	2025-04-20T04:17:07.1498105	Item Models: lostlegends
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/lostlegends/models/item/cobblestone_golem_spawn_egg.json
 7376b60148e585a77e8a795fbbf162cd723cacc3 assets/lostlegends/models/item/fate_core.json
 0102739eefaf999923e0ee09f86643366eb11a0b assets/lostlegends/models/item/lightning_staff.json
-ec6d18786d269f839334702b14c679cb6a7d8a6a assets/lostlegends/models/item/metal_detector.json
 083c3010be642be776f177e2d9d9a2a960b8a492 assets/lostlegends/models/item/raw_unobtanium.json
 2700851e8090dff0e4ca23169b1f2b945a7c05bb assets/lostlegends/models/item/sculkberry.json
 46630ee17854fb0871dc2e0a50032dd51d0e636e assets/lostlegends/models/item/sculk_brick_button.json
@@ -10,7 +10,12 @@ ec6d18786d269f839334702b14c679cb6a7d8a6a assets/lostlegends/models/item/metal_de
 5511703f14ba18f70fcfeb60fb2af372456295a0 assets/lostlegends/models/item/sculk_brick_wall.json
 58229801f3e2c438f9234e20f98d0433b53892ce assets/lostlegends/models/item/unobtanium.json
 9815746066d1640130d92f9a83f5d20331440556 assets/lostlegends/models/item/unobtanium_axe.json
+7ce9fdece08dae9d92ef4ad176a3c810cf59c879 assets/lostlegends/models/item/unobtanium_boots.json
+266bd4516144eb3bbc6f7cfb16ca7b3e52c9d639 assets/lostlegends/models/item/unobtanium_chestplate.json
+e8b39f4ff47e931b324400d53645cba6f8ebe90d assets/lostlegends/models/item/unobtanium_hammer.json
+de695734ad33146f5fdfdbc40e5a901f1fe4f8dc assets/lostlegends/models/item/unobtanium_helmet.json
 2339598ffdd3b4cc617dca35767728092db53b6b assets/lostlegends/models/item/unobtanium_hoe.json
+4c3a583f09f0a62f8ca5ffc3d4b5ab42e1cf7bbf assets/lostlegends/models/item/unobtanium_leggings.json
 e9e8353aa4c51441a1808c58a3a556af4446fb62 assets/lostlegends/models/item/unobtanium_paxel.json
 383431488303fca82358231c4a744e2713aa9410 assets/lostlegends/models/item/unobtanium_pickaxe.json
 11a9c278af3c79f2335d130c3d6fd652e245c216 assets/lostlegends/models/item/unobtanium_shovel.json

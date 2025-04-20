@@ -34,9 +34,19 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UNOBTANIUM_SHOVEL.get());
                         output.accept(ModItems.UNOBTANIUM_HOE.get());
                         output.accept(ModItems.UNOBTANIUM_PAXEL.get());
+                        output.accept(ModItems.UNOBTANIUM_HAMMER.get());
+
+                        // Armor
+                        output.accept(ModItems.UNOBTANIUM_HELMET.get());
+                        output.accept(ModItems.UNOBTANIUM_CHESTPLATE.get());
+                        output.accept(ModItems.UNOBTANIUM_LEGGING.get());
+                        output.accept(ModItems.UNOBTANIUM_BOOTS.get());
 
                         // Food Items
                         output.accept(ModItems.SCULKBERRY.get());
+
+                        // Spawn Eggs
+                        output.accept(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.get());
 
                         // Fuel Items
                         output.accept(ModItems.UNOBTANIUM_WASTE.get());

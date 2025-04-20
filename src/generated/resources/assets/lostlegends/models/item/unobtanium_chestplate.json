@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "lostlegends:item/metal_detector"
+    "layer0": "lostlegends:item/unobtanium_chestplate"
   }
 }
