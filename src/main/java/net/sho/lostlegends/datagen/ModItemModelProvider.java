@@ -33,6 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.UNOBTANIUM_AXE);
         handheldItem(ModItems.UNOBTANIUM_SHOVEL);
         handheldItem(ModItems.UNOBTANIUM_HOE);
+        handheldItem(ModItems.UNOBTANIUM_PAXEL);
 
         simpleItem(ModItems.UNOBTANIUM_WASTE);
 

@@ -47,6 +47,8 @@ public class ModItems {
             () -> new ShovelItem(ModToolTiers.UNOBTANIUM, 15, 10, new Item.Properties()));
     public static final RegistryObject<Item> UNOBTANIUM_HOE = ITEMS.register("unobtanium_hoe",
             () -> new HoeItem(ModToolTiers.UNOBTANIUM, 10, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_PAXEL = ITEMS.register("unobtanium_paxel",
+            () -> new PaxelItem(ModToolTiers.UNOBTANIUM, 80, 10, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));

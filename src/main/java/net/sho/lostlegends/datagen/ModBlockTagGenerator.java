@@ -35,6 +35,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
+        this.tag(ModTags.Blocks.PAXEL_MINEABLE)
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addTag(BlockTags.MINEABLE_WITH_AXE);
+
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.SOUND_BLOCK.get())
                 .add(ModBlocks.SCULK_BRICK.get())

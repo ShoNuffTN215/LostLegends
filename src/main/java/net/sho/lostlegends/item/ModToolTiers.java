@@ -12,7 +12,7 @@ import net.sho.lostlegends.util.ModTags;
 import java.util.List;
 
 public class ModToolTiers {
-    public static final Tier UNOBTANIUM = TierSortingRegistry.registerTier(new ForgeTier(10, 10000, -1f, -1f, 1000,
+    public static final Tier UNOBTANIUM = TierSortingRegistry.registerTier(new ForgeTier(6, 10000, -1f, -1f, 1000,
             ModTags.Blocks.NEEDS_UNOBTANIUM_TOOL, () -> Ingredient.of(ModItems.UNOBTANIUM.get())),
             new ResourceLocation(LostLegendsMod.MODID, "unobtanium"), List.of(Tiers.NETHERITE), List.of());
 }

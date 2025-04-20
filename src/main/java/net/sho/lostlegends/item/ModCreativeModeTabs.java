@@ -33,6 +33,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UNOBTANIUM_AXE.get());
                         output.accept(ModItems.UNOBTANIUM_SHOVEL.get());
                         output.accept(ModItems.UNOBTANIUM_HOE.get());
+                        output.accept(ModItems.UNOBTANIUM_PAXEL.get());
 
                         // Food Items
                         output.accept(ModItems.SCULKBERRY.get());
