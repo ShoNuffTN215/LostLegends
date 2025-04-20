@@ -12,6 +12,12 @@
 
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 
+  "item.lostlegends.unobtanium_katana": "Unobtanium Katana",
+  "item.lostlegends.unobtanium_pickaxe": "Unobtanium Pickaxe",
+  "item.lostlegends.unobtanium_axe": "Unobtanium Axe",
+  "item.lostlegends.unobtanium_shovel": "Unobtanium Shovel",
+  "item.lostlegends.unobtanium_hoe": "Unobtanium Hoe",
+
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",
   "block.lostlegends.unobtanium_ore": "Unobtanium Ore",

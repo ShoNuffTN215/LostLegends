@@ -27,6 +27,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.METAL_DETECTOR.get());
                         output.accept(ModItems.LIGHTNING_STAFF.get());
 
+                        // Tools
+                        output.accept(ModItems.UNOBTANIUM_KATANA.get());
+                        output.accept(ModItems.UNOBTANIUM_PICKAXE.get());
+                        output.accept(ModItems.UNOBTANIUM_AXE.get());
+                        output.accept(ModItems.UNOBTANIUM_SHOVEL.get());
+                        output.accept(ModItems.UNOBTANIUM_HOE.get());
+
                         // Food Items
                         output.accept(ModItems.SCULKBERRY.get());
 

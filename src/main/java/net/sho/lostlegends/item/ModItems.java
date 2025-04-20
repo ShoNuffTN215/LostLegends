@@ -1,8 +1,6 @@
 package net.sho.lostlegends.item;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -38,6 +36,17 @@ public class ModItems {
 
     public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SCULKBERRY)));
+
+    public static final RegistryObject<Item> UNOBTANIUM_KATANA = ITEMS.register("unobtanium_katana",
+            () -> new SwordItem(ModToolTiers.UNOBTANIUM, 100, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_PICKAXE = ITEMS.register("unobtanium_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.UNOBTANIUM, 30, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_AXE = ITEMS.register("unobtanium_axe",
+            () -> new AxeItem(ModToolTiers.UNOBTANIUM, 60, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_SHOVEL = ITEMS.register("unobtanium_shovel",
+            () -> new ShovelItem(ModToolTiers.UNOBTANIUM, 15, 10, new Item.Properties()));
+    public static final RegistryObject<Item> UNOBTANIUM_HOE = ITEMS.register("unobtanium_hoe",
+            () -> new HoeItem(ModToolTiers.UNOBTANIUM, 10, 10, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));

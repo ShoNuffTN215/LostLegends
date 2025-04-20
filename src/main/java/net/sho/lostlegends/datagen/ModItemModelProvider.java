@@ -29,6 +29,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.LIGHTNING_STAFF);
 
+        handheldItem(ModItems.UNOBTANIUM_PICKAXE);
+        handheldItem(ModItems.UNOBTANIUM_AXE);
+        handheldItem(ModItems.UNOBTANIUM_SHOVEL);
+        handheldItem(ModItems.UNOBTANIUM_HOE);
+
         simpleItem(ModItems.UNOBTANIUM_WASTE);
 
         buttonItem(ModBlocks.SCULK_BRICK_BUTTON, ModBlocks.SCULK_BRICK);
@@ -52,6 +57,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     public void buttonItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/button_inventory"))
                 .texture("texture",  new ResourceLocation(LostLegendsMod.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+    }
+
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(LostLegendsMod.MODID,"item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder simpleBlockItem(RegistryObject<Block> item) {
