@@ -47,7 +47,6 @@ public class LostLegendsMod {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        GeckoLib.initialize();
 
         modEventBus.addListener(this::addCreative);
 

@@ -17,10 +17,10 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
     UNOBTANIUM("unobtanium", 1000, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 10);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 10);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 10);
-        p_266655_.put(ArmorItem.Type.HELMET, 10);
+        p_266655_.put(ArmorItem.Type.BOOTS, 100);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 100);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 100);
+        p_266655_.put(ArmorItem.Type.HELMET, 100);
     }), 15000, SoundEvents.ARMOR_EQUIP_NETHERITE, 100.0F, 200F, () -> Ingredient.of(ModItems.UNOBTANIUM.get()));
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);

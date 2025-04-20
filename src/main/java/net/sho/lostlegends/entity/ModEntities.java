@@ -15,7 +15,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<CobblestoneGolemEntity>> COBBLESTONE_GOLEM =
             ENTITY_TYPES.register("cobblestone_golem", () -> EntityType.Builder.of(CobblestoneGolemEntity::new, MobCategory.CREATURE)
-                    .sized(1F, 0.5F).build("cobblestone_golem"));
+                    .sized(1.4F, 0.6F).build("cobblestone_golem"));
 
 
     public static void register(IEventBus eventBus) {

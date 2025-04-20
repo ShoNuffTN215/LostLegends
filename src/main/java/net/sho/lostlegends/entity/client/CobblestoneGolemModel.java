@@ -61,6 +61,7 @@ public class CobblestoneGolemModel<C extends Animal> extends HierarchicalModel<C
 
 		this.animateWalk(ModAnimationDefinitions.COBBLESTONE_GOLEM_RUN, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(entity.idleAnimationState, ModAnimationDefinitions.COBBLESTON_GOLEM_IDLE, ageInTicks, 1f);
+		this.animate(entity.attackAnimationState, ModAnimationDefinitions.COBBLESTONE_GOLEM_ATTACK, ageInTicks, 1f);
 
 	}
 	private void applyHeadRotation(CobblestoneGolemEntity pEntity, float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {

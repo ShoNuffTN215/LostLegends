@@ -46,7 +46,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCULKBERRY.get());
 
                         // Spawn Eggs
-                        output.accept(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.get());
+
 
                         // Fuel Items
                         output.accept(ModItems.UNOBTANIUM_WASTE.get());
@@ -79,6 +79,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FATE_CORE.get());
                         output.accept(ModItems.UNBREAKABLES_GAUNTLET.get());
                         output.accept(ModItems.DEVOURERS_PUSTULE.get());
+                        output.accept(ModItems.FLAMES_OF_CREATION.get());
+                        output.accept(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.get());
 
 
                     }).build());
