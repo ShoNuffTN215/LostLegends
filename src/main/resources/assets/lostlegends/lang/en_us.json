@@ -18,6 +18,13 @@
   "block.lostlegends.sculk_brick": "Sculk Brick",
   "block.lostlegends.sculk_brick_stairs": "Sculk Brick Stairs",
   "block.lostlegends.sculk_brick_slab": "Sculk Brick Slab",
+  "block.lostlegends.sculk_brick_button": "Sculk Brick Button",
+  "block.lostlegends.sculk_brick_pressure_plate": "Sculk Brick Pressure Plate",
+  "block.lostlegends.sculk_brick_fence": "Sculk Brick Fence",
+  "block.lostlegends.sculk_brick_fence_gate": "Sculk Brick Fence Gate",
+  "block.lostlegends.sculk_brick_wall": "Sculk Brick Wall",
+  "block.lostlegends.sculk_brick_door": "Sculk Brick Door",
+  "block.lostlegends.sculk_brick_trap_door": "Sculk Brick Trap Door",
 
   "block.lostlegends.sound_block": "Sound Block",
 

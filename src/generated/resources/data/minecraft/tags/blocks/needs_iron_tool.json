@@ -3,6 +3,13 @@
     "lostlegends:sound_block",
     "lostlegends:sculk_brick",
     "lostlegends:sculk_brick_stairs",
-    "lostlegends:sculk_brick_slab"
+    "lostlegends:sculk_brick_slab",
+    "lostlegends:sculk_brick_pressure_plate",
+    "lostlegends:sculk_brick_wall",
+    "lostlegends:sculk_brick_fence",
+    "lostlegends:sculk_brick_button",
+    "lostlegends:sculk_brick_fence_gate",
+    "lostlegends:sculk_brick_door",
+    "lostlegends:sculk_brick_trap_door"
   ]
 }

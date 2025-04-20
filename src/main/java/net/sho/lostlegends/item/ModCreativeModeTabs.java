@@ -40,6 +40,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SCULK_BRICK.get());
                         output.accept(ModBlocks.SCULK_BRICK_STAIRS.get());
                         output.accept(ModBlocks.SCULK_BRICK_SLAB.get());
+                        output.accept(ModBlocks.SCULK_BRICK_BUTTON.get());
+                        output.accept(ModBlocks.SCULK_BRICK_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.SCULK_BRICK_FENCE.get());
+                        output.accept(ModBlocks.SCULK_BRICK_FENCE_GATE.get());
+                        output.accept(ModBlocks.SCULK_BRICK_WALL.get());
+                        output.accept(ModBlocks.SCULK_BRICK_DOOR.get());
+                        output.accept(ModBlocks.SCULK_BRICK_TRAP_DOOR.get());
 
                         // Functional Blocks
                         output.accept(ModBlocks.SOUND_BLOCK.get());

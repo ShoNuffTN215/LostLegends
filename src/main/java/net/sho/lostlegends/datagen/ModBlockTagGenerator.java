@@ -39,7 +39,14 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.SOUND_BLOCK.get())
                 .add(ModBlocks.SCULK_BRICK.get())
                 .add(ModBlocks.SCULK_BRICK_STAIRS.get())
-                .add(ModBlocks.SCULK_BRICK_SLAB.get());
+                .add(ModBlocks.SCULK_BRICK_SLAB.get())
+                .add(ModBlocks.SCULK_BRICK_PRESSURE_PLATE.get())
+                .add(ModBlocks.SCULK_BRICK_WALL.get())
+                .add(ModBlocks.SCULK_BRICK_FENCE.get())
+                .add(ModBlocks.SCULK_BRICK_BUTTON.get())
+                .add(ModBlocks.SCULK_BRICK_FENCE_GATE.get())
+                .add(ModBlocks.SCULK_BRICK_DOOR.get())
+                .add(ModBlocks.SCULK_BRICK_TRAP_DOOR.get());
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.UNOBTANIUM_BLOCK.get(),

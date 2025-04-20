@@ -24,6 +24,17 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SOUND_BLOCK.get());
         this.dropSelf(ModBlocks.SCULK_BRICK.get());
         this.dropSelf(ModBlocks.SCULK_BRICK_STAIRS.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_BUTTON.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_PRESSURE_PLATE.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_FENCE.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.SCULK_BRICK_TRAP_DOOR.get());
+
+        this.add(ModBlocks.SCULK_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SCULK_BRICK_SLAB.get()));
+        this.add(ModBlocks.SCULK_BRICK_DOOR.get(),
+                block -> createDoorTable(ModBlocks.SCULK_BRICK_DOOR.get()));
 
 
         this.add(ModBlocks.UNOBTANIUM_ORE.get(),

@@ -20,6 +20,7 @@ import net.sho.lostlegends.block.ModBlocks;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(LostLegendsMod.MODID)
@@ -41,6 +42,8 @@ public class LostLegendsMod {
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        GeckoLib.initialize();
 
         modEventBus.addListener(this::addCreative);
 
