@@ -6,6 +6,8 @@
   "item.lostlegends.metal_detector": "Unobtanium Detector",
   "item.lostlegends.lightning_staff": "Lightning Staff",
   "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
+  "entity.lostlegends.lava_fireball": "Lava Fireball",
+
   "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
   "item.lostlegends.flames_of_creation": "The Flames of Creation",
   "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
@@ -46,6 +48,11 @@
   "block.lostlegends.sculk_brick_wall": "Sculk Brick Wall",
   "block.lostlegends.sculk_brick_door": "Sculk Brick Door",
   "block.lostlegends.sculk_brick_trap_door": "Sculk Brick Trap Door",
+
+  "painting.lostlegends.unbreakables_fury.title": "The Unbreakable's Fury",
+  "painting.lostlegends.unbreakables_fury.author": "Minecraft Legends",
+  "painting.lostlegends.cat.title": "Cat",
+  "painting.lostlegends.cat.author": "JDMeisch22",
 
   "block.lostlegends.sound_block": "Sound Block",
 

@@ -26,11 +26,7 @@ public class ModItems {
     public static final RegistryObject<Item> LIGHTNING_STAFF = ITEMS.register("lightning_staff",
             LightningStaffItem::new);
     public static final RegistryObject<Item> UNBREAKABLES_GAUNTLET = ITEMS.register("unbreakables_gauntlet",
-            () -> new UnbreakablesGauntletItem(new Item.Properties()
-                    .durability(100).rarity(Rarity.UNCOMMON)// Set durability
-                    .fireResistant(), // Optional: make it fire-resistant
-                    20, // 1 second cooldown (20 ticks)
-                    10.0F)); // Fireball power/explosion radius
+            () -> new UnbreakablesGauntletItem(new Item.Properties()));
     public static final RegistryObject<Item> DEVOURERS_PUSTULE = ITEMS.register("devourers_pustule",
             () -> new DevourersPustuleItem(new Item.Properties()));
     public static final RegistryObject<Item> FLAMES_OF_CREATION = ITEMS.register("flames_of_creation",

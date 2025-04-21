@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "lostlegends:unbreakables_fury",
+      "required": false
+    },
+    {
+      "id": "lostlegends:cat",
+      "required": false
+    }
+  ]
+}
