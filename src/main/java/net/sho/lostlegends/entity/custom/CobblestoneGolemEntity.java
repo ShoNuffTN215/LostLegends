@@ -12,8 +12,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.sho.lostlegends.entity.ModEntities;
@@ -21,7 +24,7 @@ import net.sho.lostlegends.entity.ai.CobblestoneGolemAttackGoal;
 import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import org.jetbrains.annotations.Nullable;
 
-public class CobblestoneGolemEntity extends Animal {
+public class CobblestoneGolemEntity extends TamableAnimal {
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(CobblestoneGolemEntity.class, EntityDataSerializers.BOOLEAN);
 
@@ -32,22 +35,23 @@ public class CobblestoneGolemEntity extends Animal {
     public int attackAnimationTimeout = 0;
 
     public CobblestoneGolemEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+        super((EntityType<? extends TamableAnimal>) pEntityType, pLevel);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 
-        this.goalSelector.addGoal(1, new CobblestoneGolemAttackGoal(this, 1.0D, true));
-
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1));
-
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 4));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1, 60, true));
-
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Monster.class, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {

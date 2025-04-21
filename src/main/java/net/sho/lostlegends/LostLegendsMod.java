@@ -3,6 +3,7 @@ package net.sho.lostlegends;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,8 +17,11 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
 import net.sho.lostlegends.block.ModBlocks;
+import net.sho.lostlegends.effect.ModEffects;
 import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
@@ -42,6 +46,7 @@ public class LostLegendsMod {
         ModBlocks.register(modEventBus);
 
         ModEntities.register(modEventBus);
+        ModEffects.MOB_EFFECTS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -51,6 +56,11 @@ public class LostLegendsMod {
         modEventBus.addListener(this::addCreative);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    public static DeferredRegister<Item> registry(IForgeRegistry<Item> items) {
+
+        return null;
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

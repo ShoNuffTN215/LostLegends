@@ -8,10 +8,15 @@
   "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
   "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
   "item.lostlegends.flames_of_creation": "The Flames of Creation",
+  "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
+
+  "effect.lostlegends.fungal_acid": "Fungal Acid",
 
   "item.lostlegends.sculkberry": "Sculkberry",
 
   "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
+
+  "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
 
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 

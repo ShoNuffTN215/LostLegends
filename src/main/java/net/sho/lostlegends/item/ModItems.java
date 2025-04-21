@@ -32,11 +32,10 @@ public class ModItems {
                     20, // 1 second cooldown (20 ticks)
                     10.0F)); // Fireball power/explosion radius
     public static final RegistryObject<Item> DEVOURERS_PUSTULE = ITEMS.register("devourers_pustule",
-            () -> new DevourersPustuleItem(new Item.Properties()
-                    .durability(10000) // Set durability - this is how many times it can restore hunger
-                    .rarity(net.minecraft.world.item.Rarity.RARE)));
+            () -> new DevourersPustuleItem(new Item.Properties()));
     public static final RegistryObject<Item> FLAMES_OF_CREATION = ITEMS.register("flames_of_creation",
             () -> new FlamesOfCreationItem(new Item.Properties().stacksTo(1).durability(64)));
+
 
     public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SCULKBERRY)));

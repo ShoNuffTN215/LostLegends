@@ -1,91 +1,144 @@
 package net.sho.lostlegends.item.custom;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.sho.lostlegends.effect.ModEffects;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
-@Mod.EventBusSubscriber
 public class DevourersPustuleItem extends Item {
-    private static final int DURABILITY_COST = 1; // Durability cost per operation
-    private static final int CHECK_INTERVAL = 100000; // Check every 5 seconds (100 ticks)
+    // Constants for the effect field
+    public static final int EFFECT_RADIUS = 5; // Radius in blocks
+    public static final int EFFECT_DURATION = 60; // Duration in ticks (3 seconds, refreshed frequently)
+    public static final int EFFECT_AMPLIFIER = 0; // Effect level (0 = level 1)
 
-    public DevourersPustuleItem(Properties properties) {
-        super(properties);
+    // Constants for food properties
+    private static final int HUNGER_RESTORED = 4; // Hunger points restored
+    private static final float SATURATION_RESTORED = 0.3F; // Saturation restored
+    private static final int DURABILITY_DAMAGE = 1; // Durability consumed per use
+
+    public DevourersPustuleItem(Item.Properties properties) {
+        super(properties
+                .durability(32) // Total uses
+                .food(new FoodProperties.Builder()
+                        .nutrition(HUNGER_RESTORED)
+                        .saturationMod(SATURATION_RESTORED)
+                        .alwaysEat() // Can eat even when not hungry
+                        .build())
+        );
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        // Only process on the server side and every CHECK_INTERVAL ticks
-        if (level.isClientSide || entity.tickCount % CHECK_INTERVAL != 0) {
-            return;
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+
+        // Start using the item like food
+        if (isEdible()) {
+            if (player.canEat(itemStack.getFoodProperties(player).canAlwaysEat())) {
+                player.startUsingItem(hand);
+                return InteractionResultHolder.consume(itemStack);
+            } else {
+                return InteractionResultHolder.fail(itemStack);
+            }
         }
 
-        if (entity instanceof Player player) {
-            // Check if player's food level is below maximum
-            if (player.getFoodData().getFoodLevel() < 20 || player.getFoodData().getSaturationLevel() < 20.0F) {
-                // Restore hunger and saturation
-                player.getFoodData().setFoodLevel(20);
-                player.getFoodData().setSaturation(20.0F);
+        return InteractionResultHolder.pass(itemStack);
+    }
 
-                // Damage the item
-                if (!player.getAbilities().instabuild) {
-                    stack.hurtAndBreak(DURABILITY_COST, player, (p) -> {
-                        p.broadcastBreakEvent(p.getUsedItemHand());
-                        // Play a sound or show a particle when the item is damaged
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                                net.minecraft.sounds.SoundEvents.ITEM_BREAK,
-                                net.minecraft.sounds.SoundSource.PLAYERS, 0.5F, 0.8F);
-                    });
-                }
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+        if (!(entity instanceof Player player)) {
+            return stack;
+        }
+
+        // Apply the base food effects
+        super.finishUsingItem(stack, level, entity);
+
+        // Play a sound
+        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                SoundEvents.SLIME_SQUISH, SoundSource.PLAYERS, 0.5F, 0.4F);
+
+        // Damage the item
+        if (!player.getAbilities().instabuild) {
+            stack.hurtAndBreak(DURABILITY_DAMAGE, player, (p) ->
+                    p.broadcastBreakEvent(p.getUsedItemHand()));
+        }
+
+        // Update stats
+        player.awardStat(Stats.ITEM_USED.get(this));
+
+        return stack;
+    }
+
+    /**
+     * Apply the Fungal Acid effect to entities in a radius around the player.
+     * This is called from the tick handler, not directly from the item.
+     */
+    public static void applyEffectInRadius(ServerLevel level, Player player) {
+        // Get all living entities within radius
+        List<LivingEntity> entities = level.getEntitiesOfClass(
+                LivingEntity.class,
+                player.getBoundingBox().inflate(EFFECT_RADIUS),
+                entity -> entity != player && entity.isAffectedByPotions() // Exclude the player
+        );
+
+        // Apply the effect to all entities
+        for (LivingEntity entity : entities) {
+            entity.addEffect(new MobEffectInstance(
+                    ModEffects.FUNGAL_ACID.get(),
+                    EFFECT_DURATION,
+                    EFFECT_AMPLIFIER
+            ));
+        }
+    }
+
+    /**
+     * Spawn particles around the player to visualize the effect field.
+     * This is called from the tick handler, not directly from the item.
+     */
+    public static void spawnFieldParticles(ServerLevel level, Player player) {
+        // Only spawn particles occasionally to reduce visual noise
+        if (level.getGameTime() % 10 == 0) {
+            // Spawn fewer particles for performance
+            for (int i = 0; i < 5; i++) {
+                double angle = Math.random() * Math.PI * 2;
+                double distance = EFFECT_RADIUS * 0.8; // Slightly inside the radius
+                double x = player.getX() + Math.cos(angle) * distance;
+                double z = player.getZ() + Math.sin(angle) * distance;
+
+                level.sendParticles(
+                        ParticleTypes.SNEEZE, // Or another appropriate particle
+                        x,
+                        player.getY() + 0.5,
+                        z,
+                        1, // particle count
+                        0, 0.1, 0, // offset
+                        0.01 // speed
+                );
             }
         }
     }
 
-    // Alternative implementation using Forge events
-    @SubscribeEvent
-    public static void onLivingUpdateEvent(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player && !player.level().isClientSide && player.tickCount % CHECK_INTERVAL == 0) {
-            // Check if player has the amulet in inventory
-            for (ItemStack stack : player.getInventory().items) {
-                if (stack.getItem() instanceof DevourersPustuleItem && !stack.isEmpty()) {
-                    // Check if player's food level is below maximum
-                    if (player.getFoodData().getFoodLevel() < 20 || player.getFoodData().getSaturationLevel() < 20.0F) {
-                        // Restore hunger and saturation
-                        player.getFoodData().setFoodLevel(20);
-                        player.getFoodData().setSaturation(20.0F);
-
-                        // Damage the item
-                        if (!player.getAbilities().instabuild) {
-                            stack.hurtAndBreak(DURABILITY_COST, player, (p) -> {
-                                p.broadcastBreakEvent(p.getUsedItemHand());
-                                // Play a sound or show a particle when the item is damaged
-                                player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                                        net.minecraft.sounds.SoundEvents.ITEM_BREAK,
-                                        net.minecraft.sounds.SoundSource.PLAYERS, 0.5F, 0.8F);
-                            });
-                        }
-
-                        // Only process one amulet
-                        break;
-                    }
-                }
-            }
-        }
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.EAT;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("Feeds you at the cost of durability"));
-        super.appendHoverText(stack, level, tooltip, flag);
+    public int getUseDuration(ItemStack stack) {
+        return 32; // Time in ticks to consume the item
     }
 }
