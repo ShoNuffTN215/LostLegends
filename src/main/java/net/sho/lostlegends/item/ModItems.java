@@ -63,6 +63,12 @@ public class ModItems {
     public static final RegistryObject<Item> UNOBTANIUM_BOOTS = ITEMS.register("unobtanium_boots",
             () -> new ArmorItem(ModArmorMaterials.UNOBTANIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+
+    public static final RegistryObject<Item> GREAT_HOGS_CROWN = ITEMS.register("great_hogs_crown",
+            () -> new GreatHogsCrownItem(ModArmorMaterials.ROYAL, new Item.Properties()));
+    public static final RegistryObject<Item> BEAST_MASK = ITEMS.register("beast_mask",
+            () -> new BeastMaskItem(ModArmorMaterials.BEAST, ArmorItem.Type.HELMET,
+                    new Item.Properties()));
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));
 

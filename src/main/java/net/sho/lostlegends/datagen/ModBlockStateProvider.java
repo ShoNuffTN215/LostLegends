@@ -23,6 +23,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SCULK_BRICK);
         blockWithItem(ModBlocks.UNOBTANIUM_ORE);
 
+
         stairsBlock(((StairBlock) ModBlocks.SCULK_BRICK_STAIRS.get()), blockTexture(ModBlocks.SCULK_BRICK.get()));
         slabBlock(((SlabBlock) ModBlocks.SCULK_BRICK_SLAB.get()), blockTexture(ModBlocks.SCULK_BRICK.get()), blockTexture(ModBlocks.SCULK_BRICK.get()));
 

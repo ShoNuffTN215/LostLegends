@@ -21,7 +21,15 @@ public enum ModArmorMaterials implements ArmorMaterial {
         p_266655_.put(ArmorItem.Type.LEGGINGS, 100);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 100);
         p_266655_.put(ArmorItem.Type.HELMET, 100);
-    }), 15000, SoundEvents.ARMOR_EQUIP_NETHERITE, 100.0F, 200F, () -> Ingredient.of(ModItems.UNOBTANIUM.get()));
+    }), 15000, SoundEvents.ARMOR_EQUIP_NETHERITE, 100.0F, 200F, () -> Ingredient.of(ModItems.UNOBTANIUM.get())),
+
+    ROYAL("royal", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (protMap) -> {
+        protMap.put(ArmorItem.Type.HELMET, 10);
+    }), 15, SoundEvents.ARMOR_EQUIP_GOLD, 2.0F, 0.0F, () -> Ingredient.of(Items.GOLD_INGOT)),
+
+    BEAST("beast", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (protMap) -> {
+        protMap.put(ArmorItem.Type.HELMET, 5);
+    }), 15, SoundEvents.ARMOR_EQUIP_GOLD, 2.0F, 0.0F, () -> Ingredient.of(Items.GOLD_INGOT));
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
@@ -30,6 +38,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
         p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
         p_266653_.put(ArmorItem.Type.HELMET, 11);
     });
+
     private final String name;
     private final int durabilityMultiplier;
     private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;

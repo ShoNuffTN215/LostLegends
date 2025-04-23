@@ -1,0 +1,14 @@
+{
+  "cobblestone_golem_death": {
+    "sounds": [
+      "lostlegends:cobblestone_golem_death"
+    ],
+    "subtitle": "subtitles.lostlegends.cobblestone_golem_death"
+  },
+  "cobblestone_golem_hurt": {
+    "sounds": [
+      "lostlegends:cobblestone_golem_hurt"
+    ],
+    "subtitle": "subtitles.lostlegends.cobblestone_golem_hurt"
+  }
+}

@@ -1,6 +1,8 @@
 package net.sho.lostlegends;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -27,6 +29,7 @@ import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import net.sho.lostlegends.painting.ModPaintings;
+import net.sho.lostlegends.sound.ModSounds;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -50,10 +53,13 @@ public class LostLegendsMod {
         ModEffects.MOB_EFFECTS.register(modEventBus);
 
         ModPaintings.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        GeckoLib.initialize();
 
 
         modEventBus.addListener(this::addCreative);

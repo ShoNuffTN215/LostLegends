@@ -6,6 +6,9 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -22,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.entity.ai.CobblestoneGolemAttackGoal;
 import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
+import net.sho.lostlegends.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 public class CobblestoneGolemEntity extends TamableAnimal {
@@ -123,4 +127,18 @@ public class CobblestoneGolemEntity extends TamableAnimal {
         super.defineSynchedData();
         this.entityData.define(ATTACKING, false);
     }
+    // SOUNDS
+
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return ModSounds.COBBLESTONE_GOLEM_DEATH.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return ModSounds.COBBLESTONE_GOLEM_HURT.get();
+    }
 }
+
+

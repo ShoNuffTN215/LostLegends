@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.entity.client.LavaFireballRenderer;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import software.bernie.geckolib.GeckoLib;
 
 @Mod.EventBusSubscriber(modid = LostLegendsMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -16,15 +18,17 @@ public class ClientSetup {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.LAVA_FIREBALL.get(), LavaFireballRenderer::new);
 
-        // Other renderers...
     }
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(
                 new ModelLayerLocation(new ResourceLocation(LostLegendsMod.MODID, "lava_fireball"), "main"),
-                LavaFireballRenderer::createBodyLayer
-        );
+                LavaFireballRenderer::createBodyLayer);
+
+
+
+
 
         // Other layer definitions...
     }

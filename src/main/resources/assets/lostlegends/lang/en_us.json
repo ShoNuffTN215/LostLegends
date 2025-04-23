@@ -12,6 +12,7 @@
   "item.lostlegends.flames_of_creation": "The Flames of Creation",
   "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
 
+
   "effect.lostlegends.fungal_acid": "Fungal Acid",
 
   "item.lostlegends.sculkberry": "Sculkberry",
@@ -35,9 +36,13 @@
   "item.lostlegends.unobtanium_leggings": "Unobtanium Leggings",
   "item.lostlegends.unobtanium_boots": "Unobtanium Boots",
 
+  "item.lostlegends.great_hogs_crown": "The Great Hog's Crown",
+  "item.lostlegends.beast_mask": "The Beast's Mask",
+
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",
   "block.lostlegends.unobtanium_ore": "Unobtanium Ore",
+  "block.lostlegends.custom_test_block": "Test Block",
   "block.lostlegends.sculk_brick": "Sculk Brick",
   "block.lostlegends.sculk_brick_stairs": "Sculk Brick Stairs",
   "block.lostlegends.sculk_brick_slab": "Sculk Brick Slab",
