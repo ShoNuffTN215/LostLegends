@@ -60,7 +60,7 @@ public class CobblestoneGolemEntity extends TamableAnimal {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes().add(
-                Attributes.MAX_HEALTH, 10D)
+                Attributes.MAX_HEALTH, 30D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.2f)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.2f)

@@ -29,6 +29,7 @@ import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import net.sho.lostlegends.painting.ModPaintings;
+import net.sho.lostlegends.registry.EntityRegistry;
 import net.sho.lostlegends.sound.ModSounds;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
@@ -50,6 +51,8 @@ public class LostLegendsMod {
         ModBlocks.register(modEventBus);
 
         ModEntities.register(modEventBus);
+        EntityRegistry.register(modEventBus);
+
         ModEffects.MOB_EFFECTS.register(modEventBus);
 
         ModPaintings.register(modEventBus);

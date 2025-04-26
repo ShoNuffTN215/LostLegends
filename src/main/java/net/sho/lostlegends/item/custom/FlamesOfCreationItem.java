@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.sho.lostlegends.entity.ModEntities;
+import net.sho.lostlegends.registry.EntityRegistry;
 
 public class FlamesOfCreationItem extends Item {
 
@@ -49,7 +50,7 @@ public class FlamesOfCreationItem extends Item {
                 success = spawnGolem(serverLevel, blockPos, ModEntities.COBBLESTONE_GOLEM.get(), player);
             }
             else if (blockState.is(Blocks.GRINDSTONE)) {
-                success = spawnGolem(serverLevel, blockPos, ModEntities.COBBLESTONE_GOLEM.get(), player);
+                success = spawnGolem(serverLevel, blockPos, EntityRegistry.GRINDSTONE_GOLEM.get(), player);
             }
 
             if (success) {

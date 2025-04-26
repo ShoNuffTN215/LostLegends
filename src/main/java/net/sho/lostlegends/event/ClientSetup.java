@@ -18,6 +18,8 @@ public class ClientSetup {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.LAVA_FIREBALL.get(), LavaFireballRenderer::new);
 
+
+
     }
 
     @SubscribeEvent
@@ -25,7 +27,6 @@ public class ClientSetup {
         event.registerLayerDefinition(
                 new ModelLayerLocation(new ResourceLocation(LostLegendsMod.MODID, "lava_fireball"), "main"),
                 LavaFireballRenderer::createBodyLayer);
-
 
 
 

@@ -9,6 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.item.custom.*;
+import net.sho.lostlegends.registry.EntityRegistry;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -38,6 +39,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> COBBLESTONE_GOLEM_SPAWN_EGG = ITEMS.register("cobblestone_golem_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.COBBLESTONE_GOLEM, 0x7e9680, 0xc5d1c5, new Item.Properties()));
+    public static final RegistryObject<Item> GRINDSTONE_GOLEM_SPAWN_EGG = ITEMS.register("grindstone_golem_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityRegistry.GRINDSTONE_GOLEM, 0x7e9680, 2986, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_KATANA = ITEMS.register("unobtanium_katana",
             () -> new SwordItem(ModToolTiers.UNOBTANIUM, 100, 10, new Item.Properties()));

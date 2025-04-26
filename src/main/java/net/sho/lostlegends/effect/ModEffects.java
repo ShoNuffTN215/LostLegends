@@ -12,4 +12,7 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> FUNGAL_ACID =
             MOB_EFFECTS.register("fungal_acid", FungalAcidEffect::new);
+
+    public static final RegistryObject<MobEffect> STUN =
+            MOB_EFFECTS.register("stun", StunEffect::new);
 }
