@@ -12,23 +12,20 @@
   "item.lostlegends.flames_of_creation": "The Flames of Creation",
   "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
 
+  "effect.lostlegends.king_of_the_nether": "King of the Nether",
 
   "effect.lostlegends.fungal_acid": "Fungal Acid",
   "effect.lostlegends.stun": "Stunned",
-  "effect.lostlegends.stun.cannot_attack": "You are stunned and cannot attack!",
-  "effect.lostlegends.stun.cannot_break": "You are stunned and cannot break blocks!",
-  "effect.lostlegends.stun.cannot_interact": "You are stunned and cannot interact!",
-  "effect.lostlegends.stun.cannot_use_item": "You are stunned and cannot use items!",
-  "effect.lostlegends.stun.cannot_mount": "You are stunned and cannot mount!",
-  "effect.lostlegends.stun.cannot_jump": "You are stunned and cannot jump!",
 
   "item.lostlegends.sculkberry": "Sculkberry",
 
   "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
   "item.lostlegends.grindstone_golem_spawn_egg": "Grindstone Golem Spawn Egg",
+  "item.lostlegends.plank_golem_spawn_egg": "Plank Golem Spawn Egg",
 
   "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
   "entity.lostlegends.grindstone_golem": "Grindstone Golem",
+  "entity.geckolib.plank_golem": "Plank Golem",
 
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 

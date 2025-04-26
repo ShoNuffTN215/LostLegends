@@ -47,7 +47,7 @@ public class FlamesOfCreationItem extends Item {
                 success = spawnGolem(serverLevel, blockPos, ModEntities.COBBLESTONE_GOLEM.get(), player);
             }
             else if (blockState.is(Blocks.OAK_PLANKS)) {
-                success = spawnGolem(serverLevel, blockPos, ModEntities.COBBLESTONE_GOLEM.get(), player);
+                success = spawnGolem(serverLevel, blockPos, EntityRegistry.PLANK_GOLEM.get(), player);
             }
             else if (blockState.is(Blocks.GRINDSTONE)) {
                 success = spawnGolem(serverLevel, blockPos, EntityRegistry.GRINDSTONE_GOLEM.get(), player);

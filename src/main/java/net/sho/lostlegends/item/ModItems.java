@@ -41,6 +41,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.COBBLESTONE_GOLEM, 0x7e9680, 0xc5d1c5, new Item.Properties()));
     public static final RegistryObject<Item> GRINDSTONE_GOLEM_SPAWN_EGG = ITEMS.register("grindstone_golem_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityRegistry.GRINDSTONE_GOLEM, 0x7e9680, 2986, new Item.Properties()));
+    public static final RegistryObject<Item> PLANK_GOLEM_SPAWN_EGG = ITEMS.register("plank_golem_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityRegistry.PLANK_GOLEM, 0xC7A06D, 0x8B5A2B, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_KATANA = ITEMS.register("unobtanium_katana",
             () -> new SwordItem(ModToolTiers.UNOBTANIUM, 100, 10, new Item.Properties()));

@@ -15,4 +15,7 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> STUN =
             MOB_EFFECTS.register("stun", StunEffect::new);
+
+    public static final RegistryObject<MobEffect> KING_OF_THE_NETHER = MOB_EFFECTS.register(
+            "king_of_the_nether", KingOfTheNetherEffect::new);
 }

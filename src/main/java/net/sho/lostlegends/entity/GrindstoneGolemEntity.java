@@ -73,11 +73,11 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 22.5D)
+                .add(Attributes.MAX_HEALTH, 11.75D)
                 .add(Attributes.MOVEMENT_SPEED, 0.4D)
-                .add(Attributes.ATTACK_DAMAGE, 6.0f)
+                .add(Attributes.ATTACK_DAMAGE, 5.0f)
                 .add(Attributes.FOLLOW_RANGE, 32.0D)
-                .add(Attributes.ATTACK_SPEED, 4.0D);
+                .add(Attributes.ATTACK_SPEED, 3.0D);
     }
 
     @Override
@@ -175,7 +175,7 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
             target.hurt(this.damageSources().mobAttack(this), (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE));
 
             // Apply stun effect
-            target.addEffect(new MobEffectInstance(ModEffects.STUN.get(), 3, 3));
+            target.addEffect(new MobEffectInstance(ModEffects.STUN.get(), 100, 3));
 
             // Apply knockback
             double knockbackStrength = 0.5;
