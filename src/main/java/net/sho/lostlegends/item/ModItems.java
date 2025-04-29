@@ -32,6 +32,8 @@ public class ModItems {
             () -> new DevourersPustuleItem(new Item.Properties()));
     public static final RegistryObject<Item> FLAMES_OF_CREATION = ITEMS.register("flames_of_creation",
             () -> new FlamesOfCreationItem(new Item.Properties().stacksTo(1).durability(64)));
+    public static final RegistryObject<Item> LUTE = ITEMS.register("lute",
+            () -> new LuteItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
 
     public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",

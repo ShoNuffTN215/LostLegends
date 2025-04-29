@@ -11,6 +11,8 @@
   "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
   "item.lostlegends.flames_of_creation": "The Flames of Creation",
   "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
+  "item.lostlegends.lute": "Lute",
+  "tooltip.lostlegends.lute_tooltip.shift": "Right-click on a block to summon Allays that will harvest similar blocks",
 
   "effect.lostlegends.king_of_the_nether": "King of the Nether",
 

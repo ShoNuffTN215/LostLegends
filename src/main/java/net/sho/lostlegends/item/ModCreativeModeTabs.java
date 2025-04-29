@@ -81,6 +81,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UNBREAKABLES_GAUNTLET.get());
                         output.accept(ModItems.DEVOURERS_PUSTULE.get());
                         output.accept(ModItems.FLAMES_OF_CREATION.get());
+                        output.accept(ModItems.LUTE.get());
 
                         output.accept(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.GRINDSTONE_GOLEM_SPAWN_EGG.get());
