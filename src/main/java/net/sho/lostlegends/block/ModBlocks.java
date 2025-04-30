@@ -14,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.block.custom.SoundBlock;
 import net.sho.lostlegends.item.ModItems;
+import net.sho.lostlegends.block.custom.ForgeOfKnowledgeBlock;
 
 import java.util.function.Supplier;
 
@@ -65,6 +66,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)));
+    public static final RegistryObject<Block> FORGE_OF_KNOWLEDGE = registerBlock("forge_of_knowledge",
+            ForgeOfKnowledgeBlock::new);
 
 
 

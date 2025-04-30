@@ -22,6 +22,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.sho.lostlegends.block.ModBlockEntities;
 import net.sho.lostlegends.block.ModBlocks;
 import net.sho.lostlegends.effect.ModEffects;
 import net.sho.lostlegends.entity.ModEntities;
@@ -63,6 +64,8 @@ public class LostLegendsMod {
         MinecraftForge.EVENT_BUS.register(this);
 
         GeckoLib.initialize();
+
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
 
         modEventBus.addListener(this::addCreative);

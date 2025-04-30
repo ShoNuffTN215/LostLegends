@@ -90,6 +90,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GREAT_HOGS_CROWN.get());
                         output.accept(ModItems.BEAST_MASK.get());
 
+                        output.accept(ModBlocks.FORGE_OF_KNOWLEDGE.get());
+
 
 
 
