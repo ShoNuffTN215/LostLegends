@@ -21,6 +21,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_UNOBTANIUM = ITEMS.register("raw_unobtanium",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FORGE_OF_KNOWLEDGE_ICON = ITEMS.register("forge_of_knowledge_icon",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties()));
@@ -76,6 +78,8 @@ public class ModItems {
     public static final RegistryObject<Item> BEAST_MASK = ITEMS.register("beast_mask",
             () -> new BeastMaskItem(ModArmorMaterials.BEAST, ArmorItem.Type.HELMET,
                     new Item.Properties()));
+
+
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));
 

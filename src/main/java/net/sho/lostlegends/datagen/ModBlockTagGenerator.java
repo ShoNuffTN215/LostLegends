@@ -32,6 +32,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ModBlocks.UNOBTANIUM_BLOCK.get(),
                         ModBlocks.UNOBTANIUM_ORE.get(),
                         ModBlocks.SOUND_BLOCK.get());
+                        ModBlocks.FORGE_OF_KNOWLEDGE.get();
 
         this.tag(BlockTags.NEEDS_STONE_TOOL);
 
@@ -51,7 +52,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.SCULK_BRICK_BUTTON.get())
                 .add(ModBlocks.SCULK_BRICK_FENCE_GATE.get())
                 .add(ModBlocks.SCULK_BRICK_DOOR.get())
-                .add(ModBlocks.SCULK_BRICK_TRAP_DOOR.get());
+                .add(ModBlocks.SCULK_BRICK_TRAP_DOOR.get())
+                .add(ModBlocks.FORGE_OF_KNOWLEDGE.get());
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.UNOBTANIUM_BLOCK.get(),

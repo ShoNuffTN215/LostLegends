@@ -30,6 +30,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SCULK_BRICK_FENCE_GATE.get());
         this.dropSelf(ModBlocks.SCULK_BRICK_WALL.get());
         this.dropSelf(ModBlocks.SCULK_BRICK_TRAP_DOOR.get());
+        this.dropSelf(ModBlocks.FORGE_OF_KNOWLEDGE.get());
 
         this.add(ModBlocks.SCULK_BRICK_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.SCULK_BRICK_SLAB.get()));

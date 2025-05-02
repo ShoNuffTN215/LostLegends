@@ -1,4 +1,5 @@
-// 1.20.1	2025-04-19T23:15:18.8668644	Loot Tables
+// 1.20.1	2025-04-30T19:57:37.9383971	Loot Tables
+d2f3283ac6b3800dbff0b2de49939210f9d03c11 data/lostlegends/loot_tables/blocks/forge_of_knowledge.json
 c6070c8edd10186199a39fa5a2ac1e325921180b data/lostlegends/loot_tables/blocks/raw_unobtanium_block.json
 3748d2798d154b5370b2183edd7513d4a9093e79 data/lostlegends/loot_tables/blocks/sculk_brick.json
 ea5b1d223aaddeaa6bd0901aa0014dca8f5ad12a data/lostlegends/loot_tables/blocks/sculk_brick_button.json

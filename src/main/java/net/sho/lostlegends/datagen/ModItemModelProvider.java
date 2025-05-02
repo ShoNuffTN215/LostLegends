@@ -42,6 +42,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.UNOBTANIUM_LEGGING);
         simpleItem(ModItems.UNOBTANIUM_BOOTS);
 
+        simpleItem(ModItems.FORGE_OF_KNOWLEDGE_ICON);
+
         simpleItem(ModItems.GREAT_HOGS_CROWN);
         simpleItem(ModItems.BEAST_MASK);
 
