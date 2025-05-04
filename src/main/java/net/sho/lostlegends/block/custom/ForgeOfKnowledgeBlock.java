@@ -1,11 +1,18 @@
 package net.sho.lostlegends.block.custom;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -18,14 +25,18 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import net.sho.lostlegends.block.ModBlockEntities;
 import net.sho.lostlegends.block.entity.ForgeOfKnowledgeBlockEntity;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.util.RandomSource;
+
+import java.util.List;
 
 public class ForgeOfKnowledgeBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -220,12 +231,6 @@ public class ForgeOfKnowledgeBlock extends BaseEntityBlock {
         return true; // Let skylight pass through
     }
 
-    @Override
-    public RenderShape getRenderShape(BlockState state) {
-        // Only render the main part (part 0) with the custom renderer
-        return state.getValue(PART) == 0 ? RenderShape.ENTITYBLOCK_ANIMATED : RenderShape.INVISIBLE;
-    }
-
     // Override to completely replace the default particle behavior
     @Override
     public void spawnDestroyParticles(Level level, Player player, BlockPos pos, BlockState state) {
@@ -259,6 +264,14 @@ public class ForgeOfKnowledgeBlock extends BaseEntityBlock {
         super.animateTick(state, level, pos, random);
     }
 
+    // Block Entity Stuff
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        // Only render the main part (part 0) with the custom renderer
+        return state.getValue(PART) == 0 ? RenderShape.ENTITYBLOCK_ANIMATED : RenderShape.INVISIBLE;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -266,9 +279,40 @@ public class ForgeOfKnowledgeBlock extends BaseEntityBlock {
         return state.getValue(PART) == 0 ? new ForgeOfKnowledgeBlockEntity(pos, state) : null;
     }
 
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if (entity instanceof ForgeOfKnowledgeBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer) pPlayer), (ForgeOfKnowledgeBlockEntity) entity, pPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return state.getValue(PART) == 0 ? createTickerHelper(blockEntityType, ModBlockEntities.FORGE_OF_KNOWLEDGE.get(), ForgeOfKnowledgeBlockEntity::tick) : null;
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        if (pLevel.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.FORGE_OF_KNOWLEDGE.get(),
+                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+    }
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Component.translatable("tooltip.lostlegends.forge_of_knowledge.line1")
+                .withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.lostlegends.forge_of_knowledge.line2")
+                .withStyle(ChatFormatting.BLUE));
+
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 }
+
+

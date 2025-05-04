@@ -1,0 +1,15 @@
+{
+  "type": "lostlegends:forge_knowledge",
+  "ingredients": [
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:dirt"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "lostlegends:lute"
+  }
+}

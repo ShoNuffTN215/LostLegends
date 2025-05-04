@@ -1,6 +1,7 @@
 package net.sho.lostlegends;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -30,7 +31,10 @@ import net.sho.lostlegends.entity.client.CobblestoneGolemRenderer;
 import net.sho.lostlegends.item.ModCreativeModeTabs;
 import net.sho.lostlegends.item.ModItems;
 import net.sho.lostlegends.painting.ModPaintings;
+import net.sho.lostlegends.recipe.ModRecipes;
 import net.sho.lostlegends.registry.EntityRegistry;
+import net.sho.lostlegends.screen.ForgeOfKnowledgeScreen;
+import net.sho.lostlegends.screen.ModMenuTypes;
 import net.sho.lostlegends.sound.ModSounds;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
@@ -66,6 +70,9 @@ public class LostLegendsMod {
         GeckoLib.initialize();
 
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
 
         modEventBus.addListener(this::addCreative);
@@ -105,6 +112,8 @@ public class LostLegendsMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {
                 EntityRenderers.register(ModEntities.COBBLESTONE_GOLEM.get(), CobblestoneGolemRenderer::new);
+
+                MenuScreens.register(ModMenuTypes.FORGE_OF_KNOWLEDGE_MENU.get(), ForgeOfKnowledgeScreen::new);
 
         });
 

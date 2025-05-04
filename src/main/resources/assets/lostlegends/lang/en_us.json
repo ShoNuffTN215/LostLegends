@@ -63,6 +63,8 @@
   "block.lostlegends.sculk_brick_trap_door": "Sculk Brick Trap Door",
 
   "block.lostlegends.forge_of_knowledge": "Forge of Knowledge",
+  "tooltip.lostlegends.forge_of_knowledge.line1": "Ancient wisdom awaits...",
+  "tooltip.lostlegends.forge_of_knowledge.line2": "Right-click to access crafting interface. Takes 5 seconds to craft an item.",
 
   "painting.lostlegends.unbreakables_fury.title": "The Unbreakable's Fury",
   "painting.lostlegends.unbreakables_fury.author": "Minecraft Legends",
