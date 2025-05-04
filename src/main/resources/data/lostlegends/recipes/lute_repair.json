@@ -2,10 +2,10 @@
   "type": "lostlegends:forge_knowledge",
   "ingredients": [
     {
-      "item": "minecraft:dirt"
+      "item": "minecraft:oak_planks"
     },
     {
-      "item": "minecraft:dirt"
+      "item": "minecraft:oak_planks"
     }
   ],
   "output": {
