@@ -1,5 +1,6 @@
 package net.sho.lostlegends.event;
 
+import net.sho.lostlegends.entity.client.CapybaraRenderer;
 import net.sho.lostlegends.registry.EntityRegistry;
 import net.sho.lostlegends.client.renderer.GrindstoneGolemRenderer;
 import net.sho.lostlegends.client.renderer.PlankGolemRenderer;
@@ -15,5 +16,6 @@ public class ClientModEvents {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntityRegistry.GRINDSTONE_GOLEM.get(), GrindstoneGolemRenderer::new);
         event.registerEntityRenderer(EntityRegistry.PLANK_GOLEM.get(), PlankGolemRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.CAPYBARA.get(), CapybaraRenderer::new);
     }
 }

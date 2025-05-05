@@ -6,6 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -63,11 +64,13 @@ public class ForgeOfKnowledgeBlockEntity extends BlockEntity implements GeoBlock
                 case 7 -> true;
                 case 8 -> true;
                 case 9 -> stack.getItem() == ModItems.FATE_CORE.get();
-                case 10 -> true;
+                case 10 -> false;
                 default -> super.isItemValid(slot, stack);
             };
         }
     };
+
+
 
     private static final int INPUT_SLOT = 0;
     private static final int INPUT_SLOT_1 = 1;
@@ -134,6 +137,7 @@ public class ForgeOfKnowledgeBlockEntity extends BlockEntity implements GeoBlock
             if (hasProgressFinished()) {
                 craftItem();
                 resetProgress();
+                level.playSound(null, pPos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         } else {
             resetProgress();

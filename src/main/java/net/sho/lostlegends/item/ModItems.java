@@ -16,7 +16,7 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, LostLegendsMod.MODID);
 
     public static final RegistryObject<Item> FATE_CORE = ITEMS.register("fate_core",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> UNOBTANIUM = ITEMS.register("unobtanium",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_UNOBTANIUM = ITEMS.register("raw_unobtanium",
@@ -25,17 +25,24 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
-            () -> new MetalDetectorItem(new Item.Properties()));
+            () -> new MetalDetectorItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> LIGHTNING_STAFF = ITEMS.register("lightning_staff",
             LightningStaffItem::new);
     public static final RegistryObject<Item> UNBREAKABLES_GAUNTLET = ITEMS.register("unbreakables_gauntlet",
-            () -> new UnbreakablesGauntletItem(new Item.Properties()));
+            () -> new UnbreakablesGauntletItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DEVOURERS_PUSTULE = ITEMS.register("devourers_pustule",
-            () -> new DevourersPustuleItem(new Item.Properties()));
+            () -> new DevourersPustuleItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> FLAMES_OF_CREATION = ITEMS.register("flames_of_creation",
             () -> new FlamesOfCreationItem(new Item.Properties().stacksTo(1).durability(64)));
     public static final RegistryObject<Item> LUTE = ITEMS.register("lute",
             () -> new LuteItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+
+
+    public static final RegistryObject<Item> RUINED_FLAMES_OF_CREATION = ITEMS.register("ruined_flames_of_creation",
+            () -> new Item(new Item.Properties().stacksTo(1).stacksTo(1)));
+
+
 
 
     public static final RegistryObject<Item> SCULKBERRY = ITEMS.register("sculkberry",
@@ -47,6 +54,8 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(EntityRegistry.GRINDSTONE_GOLEM, 0x7e9680, 2986, new Item.Properties()));
     public static final RegistryObject<Item> PLANK_GOLEM_SPAWN_EGG = ITEMS.register("plank_golem_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityRegistry.PLANK_GOLEM, 0xC7A06D, 0x8B5A2B, new Item.Properties()));
+    public static final RegistryObject<Item> CAPYBARA_SPAWN_EGG = ITEMS.register("capybara_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityRegistry.CAPYBARA, 0x8B6D3F, 0x5C4A32, new Item.Properties()));
 
     public static final RegistryObject<Item> UNOBTANIUM_KATANA = ITEMS.register("unobtanium_katana",
             () -> new SwordItem(ModToolTiers.UNOBTANIUM, 100, 10, new Item.Properties()));

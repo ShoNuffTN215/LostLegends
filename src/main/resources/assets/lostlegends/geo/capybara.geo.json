@@ -1,0 +1,96 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.capybara",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Capybara",
+					"pivot": [0, -1, 0],
+					"rotation": [0, 180, 0]
+				},
+				{
+					"name": "torso",
+					"parent": "Capybara",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{"origin": [-4, 3, -5], "size": [9, 8, 11], "pivot": [0, 9, -4], "rotation": [2.5, 0, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "Capybara",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{"origin": [-2.5, 7.8, 4], "size": [6, 5, 7], "pivot": [1, 8, 5], "rotation": [-5, 0, 0], "uv": [0, 19]}
+					]
+				},
+				{
+					"name": "Ears",
+					"parent": "head",
+					"pivot": [0, -1, 0]
+				},
+				{
+					"name": "ear1",
+					"parent": "Ears",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{"origin": [-3, 12.25, 4], "size": [1, 1, 1], "uv": [16, 31]}
+					]
+				},
+				{
+					"name": "ear2",
+					"parent": "Ears",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{"origin": [3, 12.25, 4], "size": [1, 1, 1], "uv": [20, 31]}
+					]
+				},
+				{
+					"name": "legs",
+					"parent": "Capybara",
+					"pivot": [0, -1, 0]
+				},
+				{
+					"name": "leg",
+					"parent": "legs",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{"origin": [-3.5, 0, -4], "size": [2, 3.5, 2], "uv": [26, 19]}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "legs",
+					"pivot": [12, -1, -8],
+					"cubes": [
+						{"origin": [2.5, 0, -4], "size": [2, 4, 2], "uv": [26, 19]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "legs",
+					"pivot": [0, -1, 8],
+					"cubes": [
+						{"origin": [-3.5, 0, 4], "size": [2, 4, 2], "uv": [26, 19]}
+					]
+				},
+				{
+					"name": "leg4",
+					"parent": "legs",
+					"pivot": [6, -1, 0],
+					"cubes": [
+						{"origin": [2.5, 0, 4], "size": [2, 4, 2], "uv": [26, 19]}
+					]
+				}
+			]
+		}
+	]
+}

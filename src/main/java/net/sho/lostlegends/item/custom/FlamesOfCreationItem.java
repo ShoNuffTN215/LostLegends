@@ -195,7 +195,7 @@ public class FlamesOfCreationItem extends Item {
             }
         }
 
-        // Add some soul fire particles for a magical effect
+        // Add some soul fire particles
         for (int i = 0; i < 10; i++) {
             level.sendParticles(
                     ParticleTypes.SOUL_FIRE_FLAME,

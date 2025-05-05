@@ -14,6 +14,8 @@
   "item.lostlegends.lute": "Lute",
   "tooltip.lostlegends.lute_tooltip.shift": "Right-click on a block to summon Allays that will harvest similar blocks",
 
+  "item.lostlegends.ruined_flames_of_creation": "Ruined Flames of Creation",
+
   "effect.lostlegends.king_of_the_nether": "King of the Nether",
 
   "effect.lostlegends.fungal_acid": "Fungal Acid",
@@ -24,10 +26,12 @@
   "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
   "item.lostlegends.grindstone_golem_spawn_egg": "Grindstone Golem Spawn Egg",
   "item.lostlegends.plank_golem_spawn_egg": "Plank Golem Spawn Egg",
+  "item.lostlegends.capybara_spawn_egg": "Capybara Spawn Egg",
 
   "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
   "entity.lostlegends.grindstone_golem": "Grindstone Golem",
   "entity.geckolib.plank_golem": "Plank Golem",
+  "entity.lostlegends.capybara": "Capybara",
 
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 

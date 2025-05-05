@@ -1,0 +1,15 @@
+{
+  "type": "lostlegends:forge_knowledge",
+  "ingredients": [
+    {
+      "item": "lostlegends:ruined_flames_of_creation"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "lostlegends:flames_of_creation"
+  }
+}

@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sho.lostlegends.LostLegendsMod;
+import net.sho.lostlegends.entity.CapybaraEntity;
 import net.sho.lostlegends.entity.GrindstoneGolemEntity;
 import net.sho.lostlegends.entity.PlankGolemEntity;
 
@@ -30,6 +31,13 @@ public class EntityRegistry {
                     .sized(0.6F, 1.2F)
                     .clientTrackingRange(8)
                     .build(new ResourceLocation(LostLegendsMod.MODID, "plank_golem").toString()));
+
+    public static final RegistryObject<EntityType<CapybaraEntity>> CAPYBARA =
+            ENTITY_TYPES.register("capybara",
+                    () -> EntityType.Builder.of(CapybaraEntity::new, MobCategory.CREATURE)
+                            .sized(0.9F, 0.6F)
+                            .clientTrackingRange(8)
+                            .build(new ResourceLocation(LostLegendsMod.MODID, "capybara").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

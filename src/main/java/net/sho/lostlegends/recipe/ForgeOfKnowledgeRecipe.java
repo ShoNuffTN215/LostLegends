@@ -26,15 +26,25 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        if (pLevel.isClientSide()) {
-            return false;
-        }
-        if (pContainer.getItem(9).getItem() != ModItems.FATE_CORE.get()) {
+    public boolean matches(SimpleContainer inventory, Level level) {
+        // Check if we have enough slots in the inventory
+        if (inventory.getContainerSize() < 9) {
             return false;
         }
 
-        return inputItems.get(0).test(pContainer.getItem(0));
+        // Check each ingredient against the corresponding inventory slot
+        for (int i = 0; i < 9; i++) {
+            Ingredient ingredient = this.getIngredients().get(i);
+            ItemStack itemStack = inventory.getItem(i);
+
+            // If this ingredient doesn't match the item in the slot, recipe doesn't match
+            if (!ingredient.test(itemStack)) {
+                return false;
+            }
+        }
+
+        // All ingredients matched their slots
+        return true;
     }
 
     @Override
@@ -84,17 +94,23 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public ForgeOfKnowledgeRecipe fromJson(ResourceLocation id, JsonObject json) {
+            // Parse the output item
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
+            // Get the ingredients array from JSON
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
+
+            // Create a list for our ingredients with the correct size (9 input slots)
             NonNullList<Ingredient> inputs = NonNullList.withSize(9, Ingredient.EMPTY);
 
-            // Make sure we don't exceed the array size
-            for (int i = 0; i < Math.min(ingredients.size(), 9); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+            // Safely parse each ingredient
+            for (int i = 0; i < Math.min(ingredients.size(), inputs.size()); i++) {
+                // Only process if the index is valid in the JSON array
+                if (i < ingredients.size()) {
+                    inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                }
+                // If JSON has fewer ingredients than expected, the remaining slots stay as EMPTY
             }
-
-            // If there are fewer than 9 ingredients in the JSON, the remaining slots will be EMPTY
 
             return new ForgeOfKnowledgeRecipe(id, output, inputs);
         }
