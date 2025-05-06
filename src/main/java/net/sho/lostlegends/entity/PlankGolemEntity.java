@@ -24,6 +24,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -172,39 +173,65 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
     }
 
     private void attackWithArrow(LivingEntity target) {
-        if (!this.level().isClientSide) {
-            // Final check before attacking to prevent friendly fire
+        if (!this.level().isClientSide()) {
+            // Final check before attacking
             if (target instanceof TamableAnimal tamable && this.getOwnerUUID() != null &&
                     this.getOwnerUUID().equals(tamable.getOwnerUUID())) {
                 return;
             }
 
-            Arrow arrow = new Arrow(this.level(), this);
-            double d0 = target.getX() - this.getX();
-            double d1 = target.getY(0.3333333333333333D) - arrow.getY();
-            double d2 = target.getZ() - this.getZ();
-            double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-            arrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
+            // Set attacking state
+            this.setAttacking(true);
+            this.attackAnimationTicks = 11;
 
-            // Set the owner of the arrow to prevent friendly fire
+            // Calculate spawn position
+            Vec3 lookVec = this.getLookAngle();
+            double spawnDistance = 0.8;
+            double arrowX = this.getX() + lookVec.x * spawnDistance;
+            double arrowY = this.getEyeY() - 0.1;
+            double arrowZ = this.getZ() + lookVec.z * spawnDistance;
+
+            // Create arrow
+            Arrow arrow = new Arrow(this.level(), this);
+            arrow.setPos(arrowX, arrowY, arrowZ);
             arrow.setOwner(this);
 
-            // Store owner UUID in arrow's tag for damage prevention
+            // Store owner UUID
             CompoundTag tag = arrow.getPersistentData();
             if (this.getOwnerUUID() != null) {
                 tag.putUUID("OwnerUUID", this.getOwnerUUID());
             }
 
-            this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+            // Enhance arrow properties
+            arrow.setBaseDamage(6.0); // Significantly increased damage
+            arrow.setPierceLevel((byte)1);
+            arrow.pickup = Arrow.Pickup.DISALLOWED;
+
+            // Calculate trajectory to target's center mass
+            double targetX = target.getX();
+            double targetY = target.getY() + (target.getBbHeight() / 2.0);
+            double targetZ = target.getZ();
+
+            double d0 = targetX - arrow.getX();
+            double d1 = targetY - arrow.getY();
+            double d2 = targetZ - arrow.getZ();
+
+            // Shoot with improved parameters - higher speed, lower inaccuracy
+            arrow.shoot(d0, d1, d2, 2.5F, 0.5F);
+
             this.level().addFreshEntity(arrow);
+            this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 
-            // Set attacking state and trigger animation
-            this.setAttacking(true);
-            this.attackAnimationTicks = 11; // Animation will play for 1 second (20 ticks)
-
-            // Directly trigger the animation
-            if (this.level().isClientSide) {
-                triggerAnim("controller", "attack");
+            // BACKUP: Apply direct damage if we have line of sight
+            // This ensures damage is applied even if the arrow misses
+            if (this.hasLineOfSight(target)) {
+                // Schedule damage to be applied after a short delay (simulating arrow travel time)
+                this.level().getServer().tell(new net.minecraft.server.TickTask(5, () -> {
+                    if (target.isAlive() && !target.isDeadOrDying() && this.distanceToSqr(target) <= ATTACK_RANGE * ATTACK_RANGE) {
+                        // Apply damage directly as a fallback
+                        target.hurt(this.damageSources().mobAttack(this), 4.0F);
+                    }
+                }));
             }
         }
     }
@@ -214,43 +241,36 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
         // Get the entity that caused the damage
         Entity attacker = source.getEntity();
 
-        // Check if the attacker is a tamable animal with the same owner
-        if (attacker instanceof TamableAnimal tamableAttacker) {
-            UUID attackerOwner = tamableAttacker.getOwnerUUID();
-            UUID thisOwner = this.getOwnerUUID();
-
-            if (thisOwner != null && attackerOwner != null && thisOwner.equals(attackerOwner)) {
-                return false; // Prevent damage from entities with same owner
-            }
+        // Prevent self-damage completely
+        if (attacker == this) {
+            return false;
         }
 
-        // Check for projectile damage
+        // Check if the direct entity is a projectile
         Entity directEntity = source.getDirectEntity();
         if (directEntity instanceof Projectile projectile) {
-            Entity projectileOwner = projectile.getOwner();
-
-            // Check if projectile owner is a tamable with same owner
-            if (projectileOwner instanceof TamableAnimal tamableProjectileOwner) {
-                UUID projectileOwnerUUID = tamableProjectileOwner.getOwnerUUID();
-                UUID thisOwner = this.getOwnerUUID();
-
-                if (thisOwner != null && projectileOwnerUUID != null && thisOwner.equals(projectileOwnerUUID)) {
-                    return false; // Prevent projectile damage from entities with same owner
-                }
+            // If this entity is the owner of the projectile, prevent damage
+            if (projectile.getOwner() == this) {
+                return false;
             }
 
             // Check for stored owner UUID in projectile's tag
             CompoundTag tag = projectile.getPersistentData();
             if (tag.hasUUID("OwnerUUID")) {
                 UUID projectileOwnerUUID = tag.getUUID("OwnerUUID");
-                UUID thisOwner = this.getOwnerUUID();
+                if (this.getUUID().equals(projectileOwnerUUID)) {
+                    return false; // Prevent self-damage
+                }
 
+                // Also check if we have the same owner
+                UUID thisOwner = this.getOwnerUUID();
                 if (thisOwner != null && thisOwner.equals(projectileOwnerUUID)) {
                     return false; // Prevent damage from projectiles with same owner UUID
                 }
             }
         }
 
+        // Rest of your existing hurt method...
         return super.hurt(source, amount);
     }
 
@@ -307,7 +327,7 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(
-                new AnimationController<>(this, "controller", 5, this::animationPredicate)
+                new AnimationController<>(this, "controller", 0, this::animationPredicate) // Changed from 5 to 0 for immediate response
                         .triggerableAnim("attack", ATTACK_ANIM)
         );
     }

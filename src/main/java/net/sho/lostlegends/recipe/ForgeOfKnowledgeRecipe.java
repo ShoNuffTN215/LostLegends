@@ -16,19 +16,31 @@ import net.sho.lostlegends.item.ModItems;
 
 public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
+    private final Ingredient fateCore; // Added Fate Core as a separate field
     private final ItemStack output;
     private final ResourceLocation id;
 
-    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems) {
+    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems, Ingredient fateCore) {
         this.inputItems = inputItems;
+        this.fateCore = fateCore;
         this.output = output;
         this.id = id;
+    }
+
+    // Constructor overload for backward compatibility
+    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems) {
+        this(id, output, inputItems, Ingredient.of(ModItems.FATE_CORE.get()));
     }
 
     @Override
     public boolean matches(SimpleContainer inventory, Level level) {
         // Check if we have enough slots in the inventory
-        if (inventory.getContainerSize() < 9) {
+        if (inventory.getContainerSize() < 10) {
+            return false;
+        }
+
+        // Check if the Fate Core slot contains a valid item
+        if (!this.fateCore.test(inventory.getItem(9))) {
             return false;
         }
 
@@ -48,24 +60,28 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer p_44001_, RegistryAccess p_267165_) {
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
         return output.copy();
     }
 
-
     @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return output.copy();
     }
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
+    }
+
+    // Getter for the Fate Core ingredient
+    public Ingredient getFateCore() {
+        return this.fateCore;
     }
 
     @Override
@@ -75,22 +91,24 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return null;
+        return Serializer.INSTANCE;
     }
 
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
     }
+
     public static class Type implements RecipeType<ForgeOfKnowledgeRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
         public static final String ID = "forge_knowledge";
     }
+
     public static class Serializer implements RecipeSerializer<ForgeOfKnowledgeRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
-                new ResourceLocation(LostLegendsMod.MODID,"forge_knowledge");
+                new ResourceLocation(LostLegendsMod.MODID, "forge_knowledge");
 
         @Override
         public ForgeOfKnowledgeRecipe fromJson(ResourceLocation id, JsonObject json) {
@@ -112,28 +130,49 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
                 // If JSON has fewer ingredients than expected, the remaining slots stay as EMPTY
             }
 
-            return new ForgeOfKnowledgeRecipe(id, output, inputs);
+            // Parse the Fate Core ingredient if present, otherwise use the default
+            Ingredient fateCore = Ingredient.of(ModItems.FATE_CORE.get()); // Default
+            if (json.has("fate_core")) {
+                fateCore = Ingredient.fromJson(json.get("fate_core"));
+            }
+
+            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore);
         }
 
         @Override
         public ForgeOfKnowledgeRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
+            // Read the number of ingredients
+            int size = buf.readInt();
+            NonNullList<Ingredient> inputs = NonNullList.withSize(size, Ingredient.EMPTY);
 
+            // Read each ingredient
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
+            // Read the Fate Core ingredient
+            Ingredient fateCore = Ingredient.fromNetwork(buf);
+
+            // Read the output item
             ItemStack output = buf.readItem();
-            return new ForgeOfKnowledgeRecipe(id, output, inputs);
+
+            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore);
         }
 
         @Override
         public void toNetwork(FriendlyByteBuf buf, ForgeOfKnowledgeRecipe recipe) {
+            // Write the number of ingredients
             buf.writeInt(recipe.getIngredients().size());
 
+            // Write each ingredient
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.toNetwork(buf);
             }
+
+            // Write the Fate Core ingredient
+            recipe.getFateCore().toNetwork(buf);
+
+            // Write the output item
             buf.writeItemStack(recipe.getResultItem(null), false);
         }
     }
