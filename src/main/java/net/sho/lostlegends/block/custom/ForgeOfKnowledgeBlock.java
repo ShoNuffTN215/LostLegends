@@ -282,11 +282,20 @@ public class ForgeOfKnowledgeBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            // Determine if this is the main block or the secondary block
+            BlockPos mainBlockPos = pPos;
+
+            // If this is the secondary part (part 1), get the position of the main part (part 0)
+            if (pState.getValue(PART) == 1) {
+                mainBlockPos = getMainPos(pPos, pState);
+            }
+
+            // Get the block entity from the main block position
+            BlockEntity entity = pLevel.getBlockEntity(mainBlockPos);
             if (entity instanceof ForgeOfKnowledgeBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) pPlayer), (ForgeOfKnowledgeBlockEntity) entity, pPos);
+                NetworkHooks.openScreen(((ServerPlayer) pPlayer), (ForgeOfKnowledgeBlockEntity) entity, mainBlockPos);
             } else {
-                throw new IllegalStateException("Our Container provider is missing!");
+                throw new IllegalStateException("Our Container provider is missing at " + mainBlockPos);
             }
         }
 

@@ -30,7 +30,7 @@ public class UnbreakablesGauntletItem extends Item {
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
     public UnbreakablesGauntletItem(Properties properties) {
-        super(properties.durability(500).fireResistant());
+        super(properties.fireResistant());
 
         // Create attribute modifiers for melee damage
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
@@ -58,15 +58,15 @@ public class UnbreakablesGauntletItem extends Item {
                     lookVec.z
             );
 
-            // Position the fireball further away from the player due to its larger size
+            // Position the fireball closer to the player's eye position since it's smaller now
             fireball.setPos(
-                    player.getX() + lookVec.x * 1.5,
-                    player.getEyeY() - 0.3,
-                    player.getZ() + lookVec.z * 1.5
+                    player.getX() + lookVec.x * 1.0,
+                    player.getEyeY() - 0.1,
+                    player.getZ() + lookVec.z * 1.0
             );
 
-            // Set the fireball's velocity
-            fireball.setDeltaMovement(lookVec.scale(1.5));
+            // Set the fireball's velocity (slightly faster for the smaller projectile)
+            fireball.setDeltaMovement(lookVec.scale(1.8));
 
             // Spawn the fireball in the world
             level.addFreshEntity(fireball);

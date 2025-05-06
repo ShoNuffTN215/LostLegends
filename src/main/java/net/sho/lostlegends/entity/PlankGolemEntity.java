@@ -8,6 +8,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -69,27 +70,33 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 
-        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+        // Target goals - MODIFIED to only target hostile mobs and mobs that hurt/are hurt by owner
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this)); // Target mobs that hurt the owner
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));   // Target mobs that the owner attacks
+
         // Modified HurtByTargetGoal to exclude entities with same owner
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this) {
             @Override
             public boolean canUse() {
                 LivingEntity attacker = this.mob.getLastHurtByMob();
-                if (attacker != null && PlankGolemEntity.this.hasSameOwnerAs(attacker)) {
-                    return false;
+                if (attacker != null) {
+                    // Don't retaliate against owner
+                    if (attacker instanceof Player && attacker.getUUID().equals(PlankGolemEntity.this.getOwnerUUID())) {
+                        return false;
+                    }
+                    // Don't retaliate against entities with same owner
+                    if (PlankGolemEntity.this.hasSameOwnerAs(attacker)) {
+                        return false;
+                    }
                 }
                 return super.canUse();
             }
         }).setAlertOthers());
 
-        // Modified NearestAttackableTargetGoal to exclude entities with same owner
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, 10, true, false,
+        // Only target hostile mobs (Monster class)
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,
                 (entity) -> {
-                    // Don't target players or tamable animals with the same owner
-                    if (entity instanceof Player) return false;
-
-                    // Check if both entities are tamable and have the same owner
+                    // Additional check for entities with the same owner
                     if (entity instanceof TamableAnimal tamable) {
                         UUID targetOwner = tamable.getOwnerUUID();
                         UUID thisOwner = this.getOwnerUUID();
@@ -100,7 +107,8 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
                         }
                     }
 
-                    return !(entity instanceof TamableAnimal) || ((TamableAnimal) entity).getOwnerUUID() == null;
+                    // Only target hostile mobs (Monster class)
+                    return entity instanceof Monster;
                 }));
     }
 
@@ -147,10 +155,16 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
             if (this.getTarget() != null && !this.isInSittingPose() && attackCooldown <= 0) {
                 // Additional check to prevent attacking entities with same owner
                 if (!hasSameOwnerAs(this.getTarget())) {
-                    double distance = this.distanceToSqr(this.getTarget());
-                    if (distance < ATTACK_RANGE * ATTACK_RANGE) {
-                        this.attackWithArrow(this.getTarget());
-                        attackCooldown = ATTACK_COOLDOWN_MAX;
+                    // Verify target is still valid (hostile mob or owner's target)
+                    if (isValidTarget(this.getTarget())) {
+                        double distance = this.distanceToSqr(this.getTarget());
+                        if (distance < ATTACK_RANGE * ATTACK_RANGE) {
+                            this.attackWithArrow(this.getTarget());
+                            attackCooldown = ATTACK_COOLDOWN_MAX;
+                        }
+                    } else {
+                        // Clear invalid target
+                        this.setTarget(null);
                     }
                 } else {
                     // Clear target if it has the same owner
@@ -160,7 +174,29 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
         }
     }
 
-    // New method to check if an entity has the same owner
+    // New method to check if a target is valid (hostile mob or owner's target)
+    private boolean isValidTarget(LivingEntity target) {
+        // Always valid if it's a hostile mob
+        if (target instanceof Monster) {
+            return true;
+        }
+
+        // Valid if owner is attacking it
+        Player owner = (Player) this.getOwner();
+        if (owner != null && owner.getLastHurtMob() == target) {
+            return true;
+        }
+
+        // Valid if it attacked the owner
+        if (owner != null && target.getLastHurtMob() == owner) {
+            return true;
+        }
+
+        // Not a valid target
+        return false;
+    }
+
+    // Method to check if an entity has the same owner
     public boolean hasSameOwnerAs(Entity entity) {
         if (!(entity instanceof TamableAnimal tamable)) {
             return false;
@@ -371,6 +407,13 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
                 PlankGolemEntity.this.setTarget(null);
                 return false;
             }
+
+            // Verify target is valid (hostile mob or owner's target)
+            if (target != null && !isValidTarget(target)) {
+                PlankGolemEntity.this.setTarget(null);
+                return false;
+            }
+
             return target != null && !PlankGolemEntity.this.isInSittingPose();
         }
 
@@ -380,6 +423,12 @@ public class PlankGolemEntity extends TamableAnimal implements GeoEntity {
             if (target != null) {
                 // Double-check target doesn't have same owner
                 if (PlankGolemEntity.this.hasSameOwnerAs(target)) {
+                    PlankGolemEntity.this.setTarget(null);
+                    return;
+                }
+
+                // Double-check target is still valid
+                if (!isValidTarget(target)) {
                     PlankGolemEntity.this.setTarget(null);
                     return;
                 }

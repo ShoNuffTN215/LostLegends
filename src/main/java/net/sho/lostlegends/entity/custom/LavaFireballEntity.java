@@ -6,9 +6,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.MagmaCube;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -18,14 +18,17 @@ import net.sho.lostlegends.entity.ModEntities;
 public class LavaFireballEntity extends AbstractHurtingProjectile {
     private int explosionPower = 12;
     private static final int FIRE_SECONDS = 8;
-    private static final int LAVA_DURATION_TICKS = 100; // 5 seconds
 
     public LavaFireballEntity(EntityType<? extends AbstractHurtingProjectile> entityType, Level level) {
         super(entityType, level);
+        // Set a smaller bounding box to match the 8x8x8 pixel size
+        this.setBoundingBox(this.getBoundingBox().inflate(-0.75));
     }
 
     public LavaFireballEntity(Level level, LivingEntity shooter, double dirX, double dirY, double dirZ) {
         super(ModEntities.LAVA_FIREBALL.get(), shooter, dirX, dirY, dirZ, level);
+        // Set a smaller bounding box to match the 8x8x8 pixel size
+        this.setBoundingBox(this.getBoundingBox().inflate(-0.75));
     }
 
     @Override
@@ -46,56 +49,58 @@ public class LavaFireballEntity extends AbstractHurtingProjectile {
     public void tick() {
         super.tick();
 
-        // Spawn lava particles
+        // Spawn cube-shaped lava particles (much larger now)
         if (this.level().isClientSide) {
             double x = this.getX();
             double y = this.getY();
             double z = this.getZ();
 
-            // Many more particles for the larger fireball
-            for (int i = 0; i < 10; i++) {
-                // Lava drip particles
-                this.level().addParticle(
-                        ParticleTypes.FALLING_LAVA,
-                        x + (this.random.nextDouble() - 0.5) * 1.5,
-                        y + (this.random.nextDouble() - 0.5) * 1.5,
-                        z + (this.random.nextDouble() - 0.5) * 1.5,
-                        0, 0, 0
-                );
+            // Create a cube-like shape with particles
+            // Size is approximately 24x24x24 pixels (1.5 blocks)
+            double size = 0.75; // Half the size of the cube (24 pixels = 1.5 blocks)
 
-                // Flame particles
-                this.level().addParticle(
-                        ParticleTypes.FLAME,
-                        x + (this.random.nextDouble() - 0.5) * 1.5,
-                        y + (this.random.nextDouble() - 0.5) * 1.5,
-                        z + (this.random.nextDouble() - 0.5) * 1.5,
-                        (this.random.nextDouble() - 0.5) * 0.2,
-                        (this.random.nextDouble() - 0.5) * 0.2,
-                        (this.random.nextDouble() - 0.5) * 0.2
-                );
-            }
+            // Create the cube outline with lava particles
+            for (int i = 0; i < 24; i++) { // More particles for larger cube
+                // Choose random positions on the cube surface
+                double offsetX = (random.nextBoolean() ? -1 : 1) * size;
+                double offsetY = (random.nextBoolean() ? -1 : 1) * size;
+                double offsetZ = (random.nextBoolean() ? -1 : 1) * size;
 
-            // Lava particles
-            for (int i = 0; i < 3; i++) {
+                // Randomly select which face of the cube
+                int face = random.nextInt(3);
+                if (face == 0) offsetX = random.nextDouble() * 2 * size - size;
+                else if (face == 1) offsetY = random.nextDouble() * 2 * size - size;
+                else offsetZ = random.nextDouble() * 2 * size - size;
+
+                // Add lava particles only (no flame particles)
                 this.level().addParticle(
                         ParticleTypes.LAVA,
-                        x + (this.random.nextDouble() - 0.5) * 0.5,
-                        y + (this.random.nextDouble() - 0.5) * 0.5,
-                        z + (this.random.nextDouble() - 0.5) * 0.5,
+                        x + offsetX,
+                        y + offsetY,
+                        z + offsetZ,
                         0, 0, 0
                 );
             }
 
-            // Smoke trail
-            for (int i = 0; i < 5; i++) {
+            // Add some particles inside the cube for more volume
+            for (int i = 0; i < 8; i++) {
                 this.level().addParticle(
-                        ParticleTypes.LARGE_SMOKE,
-                        x + (this.random.nextDouble() - 0.5) * 0.8,
-                        y + (this.random.nextDouble() - 0.5) * 0.8,
-                        z + (this.random.nextDouble() - 0.5) * 0.8,
+                        ParticleTypes.LAVA,
+                        x + (random.nextDouble() * 2 - 1) * (size * 0.8),
+                        y + (random.nextDouble() * 2 - 1) * (size * 0.8),
+                        z + (random.nextDouble() * 2 - 1) * (size * 0.8),
                         0, 0, 0
                 );
             }
+
+            // Add a few smoke particles for the trail
+            this.level().addParticle(
+                    ParticleTypes.LARGE_SMOKE,
+                    x,
+                    y,
+                    z,
+                    0, 0, 0
+            );
         }
     }
 
@@ -108,15 +113,31 @@ public class LavaFireballEntity extends AbstractHurtingProjectile {
             boolean mobGriefing = this.level().getGameRules().getBoolean(net.minecraft.world.level.GameRules.RULE_MOBGRIEFING);
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.explosionPower, mobGriefing, Level.ExplosionInteraction.MOB);
 
-            // Create a pool of lava around the impact point
+            // Spawn a medium magma cube
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 BlockPos hitPos = ((BlockHitResult) hitResult).getBlockPos();
-                createLavaPool(hitPos);
+                spawnMagmaCube(hitPos.above());
+            } else {
+                // If we hit an entity or miss, spawn at current position
+                spawnMagmaCube(this.blockPosition());
             }
 
             // Remove the entity
             this.discard();
         }
+    }
+
+    private void spawnMagmaCube(BlockPos pos) {
+        MagmaCube magmaCube = new MagmaCube(EntityType.MAGMA_CUBE, this.level());
+
+        // Set position
+        magmaCube.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+
+        // Set size to medium (size 2)
+        magmaCube.setSize(2, true);
+
+        // Add to world
+        this.level().addFreshEntity(magmaCube);
     }
 
     @Override
@@ -126,26 +147,8 @@ public class LavaFireballEntity extends AbstractHurtingProjectile {
         if (!this.level().isClientSide) {
             Entity target = hitResult.getEntity();
 
-            // Set the target on fire for longer
+            // Set the target on fire
             target.setSecondsOnFire(FIRE_SECONDS);
-        }
-    }
-
-    private void createLavaPool(BlockPos centerPos) {
-        // Create a small pool of lava (3x3)
-        for (int x = -1; x <= 1; x++) {
-            for (int z = -1; z <= 1; z++) {
-                BlockPos pos = centerPos.offset(x, 1, z);
-
-                // Only place lava in air blocks
-                if (this.level().getBlockState(pos).isAir()) {
-                    // Place temporary lava
-                    this.level().setBlockAndUpdate(pos, Blocks.LAVA.defaultBlockState());
-
-                    // Schedule the lava to be removed
-                    this.level().scheduleTick(pos, Blocks.LAVA, LAVA_DURATION_TICKS);
-                }
-            }
         }
     }
 

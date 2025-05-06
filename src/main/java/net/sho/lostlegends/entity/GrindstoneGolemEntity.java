@@ -40,6 +40,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
     // Animation states
@@ -92,8 +93,44 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
 
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
-        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(4, new NonTameRandomTargetGoal<>(this, Monster.class, false, null));
+
+        // Modified HurtByTargetGoal to exclude entities with same owner
+        this.targetSelector.addGoal(3, (new HurtByTargetGoal(this) {
+            @Override
+            public boolean canUse() {
+                LivingEntity attacker = this.mob.getLastHurtByMob();
+                if (attacker != null && GrindstoneGolemEntity.this.hasSameOwnerAs(attacker)) {
+                    return false;
+                }
+                return super.canUse();
+            }
+        }).setAlertOthers());
+
+        // Create a predicate that excludes tamed entities with the same owner
+        Predicate<LivingEntity> targetPredicate = (entity) -> {
+            // Don't target tamed entities with the same owner
+            if (entity instanceof TamableAnimal tamable) {
+                return !hasSameOwnerAs(tamable);
+            }
+            return true;
+        };
+
+        // Use the predicate in the NonTameRandomTargetGoal
+        this.targetSelector.addGoal(4, new NonTameRandomTargetGoal<>(this, Monster.class, false, targetPredicate));
+    }
+
+    /**
+     * Checks if this entity has the same owner as another entity
+     */
+    public boolean hasSameOwnerAs(Entity entity) {
+        if (!(entity instanceof TamableAnimal tamable)) {
+            return false;
+        }
+
+        UUID thisOwner = this.getOwnerUUID();
+        UUID otherOwner = tamable.getOwnerUUID();
+
+        return thisOwner != null && otherOwner != null && thisOwner.equals(otherOwner);
     }
 
     @Override
@@ -102,6 +139,15 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
 
         // Get current target
         LivingEntity currentTarget = this.getTarget();
+
+        // Check if current target is a tamed entity with the same owner
+        if (currentTarget != null && currentTarget instanceof TamableAnimal tamable) {
+            if (hasSameOwnerAs(tamable)) {
+                // Clear the target if it's a tamed entity with the same owner
+                this.setTarget(null);
+                currentTarget = null;
+            }
+        }
 
         // Check if we just acquired a target (target changed from null to something)
         if (currentTarget != null && previousTarget == null) {
@@ -170,6 +216,11 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
      * Apply attack effects to the target
      */
     private void applyAttackEffects(LivingEntity target) {
+        // Double-check the target is not a tamed entity with the same owner
+        if (target instanceof TamableAnimal tamable && hasSameOwnerAs(tamable)) {
+            return;
+        }
+
         if (!this.level().isClientSide()) {
             // Apply damage
             target.hurt(this.damageSources().mobAttack(this), (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE));
@@ -194,6 +245,11 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
 
     @Override
     public boolean doHurtTarget(Entity entity) {
+        // Check if the target is a tamed entity with the same owner
+        if (entity instanceof TamableAnimal tamable && hasSameOwnerAs(tamable)) {
+            return false;
+        }
+
         // We're overriding this to NOT apply damage here
         // Instead, damage is applied in the tick method when collision is detected
 
@@ -204,6 +260,11 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
 
     @Override
     public void setTarget(@Nullable LivingEntity target) {
+        // Don't target tamed entities with the same owner
+        if (target instanceof TamableAnimal tamable && hasSameOwnerAs(tamable)) {
+            return;
+        }
+
         LivingEntity oldTarget = this.getTarget();
         super.setTarget(target);
 
@@ -298,6 +359,24 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
         }
 
         @Override
+        public boolean canUse() {
+            LivingEntity target = this.golem.getTarget();
+
+            // Don't attack if target is null
+            if (target == null) {
+                return false;
+            }
+
+            // Don't attack if target is a tamed entity with the same owner
+            if (target instanceof TamableAnimal tamable && golem.hasSameOwnerAs(tamable)) {
+                this.golem.setTarget(null);
+                return false;
+            }
+
+            return super.canUse();
+        }
+
+        @Override
         public void start() {
             super.start();
             // Start attack animation as soon as we begin pursuing a target
@@ -308,6 +387,12 @@ public class GrindstoneGolemEntity extends TamableAnimal implements GeoEntity {
         public void tick() {
             LivingEntity target = this.golem.getTarget();
             if (target == null) {
+                return;
+            }
+
+            // Check if target is a tamed entity with the same owner
+            if (target instanceof TamableAnimal tamable && golem.hasSameOwnerAs(tamable)) {
+                this.golem.setTarget(null);
                 return;
             }
 
