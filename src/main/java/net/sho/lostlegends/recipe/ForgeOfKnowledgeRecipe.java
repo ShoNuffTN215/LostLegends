@@ -14,22 +14,34 @@ import net.minecraft.world.level.Level;
 import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.item.ModItems;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> inputItems;
-    private final Ingredient fateCore; // Added Fate Core as a separate field
+    private final Ingredient fateCore;
     private final ItemStack output;
     private final ResourceLocation id;
+    private final boolean isShapeless;
 
-    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems, Ingredient fateCore) {
+    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems,
+                                  Ingredient fateCore, boolean isShapeless) {
         this.inputItems = inputItems;
         this.fateCore = fateCore;
         this.output = output;
         this.id = id;
+        this.isShapeless = isShapeless;
+    }
+
+    // Constructor overload for backward compatibility
+    public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems, Ingredient fateCore) {
+        this(id, output, inputItems, fateCore, false);
     }
 
     // Constructor overload for backward compatibility
     public ForgeOfKnowledgeRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> inputItems) {
-        this(id, output, inputItems, Ingredient.of(ModItems.FATE_CORE.get()));
+        this(id, output, inputItems, Ingredient.of(ModItems.FATE_CORE.get()), false);
     }
 
     @Override
@@ -44,19 +56,59 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
             return false;
         }
 
-        // Check each ingredient against the corresponding inventory slot
-        for (int i = 0; i < 9; i++) {
-            Ingredient ingredient = this.getIngredients().get(i);
-            ItemStack itemStack = inventory.getItem(i);
-
-            // If this ingredient doesn't match the item in the slot, recipe doesn't match
-            if (!ingredient.test(itemStack)) {
-                return false;
+        if (isShapeless) {
+            // For shapeless recipes, we need to check if all ingredients are present in any order
+            List<ItemStack> inventoryItems = new ArrayList<>();
+            for (int i = 0; i < 9; i++) {
+                ItemStack stack = inventory.getItem(i);
+                if (!stack.isEmpty()) {
+                    inventoryItems.add(stack);
+                }
             }
-        }
 
-        // All ingredients matched their slots
-        return true;
+            // Create a copy of ingredients to work with
+            List<Ingredient> remainingIngredients = new ArrayList<>();
+            for (Ingredient ingredient : this.getIngredients()) {
+                if (ingredient != Ingredient.EMPTY) {
+                    remainingIngredients.add(ingredient);
+                }
+            }
+
+            // Try to match each inventory item with an ingredient
+            for (ItemStack stack : inventoryItems) {
+                boolean foundMatch = false;
+                Iterator<Ingredient> iterator = remainingIngredients.iterator();
+
+                while (iterator.hasNext()) {
+                    Ingredient ingredient = iterator.next();
+                    if (ingredient.test(stack)) {
+                        iterator.remove();
+                        foundMatch = true;
+                        break;
+                    }
+                }
+
+                // If we couldn't match this item, the recipe doesn't match
+                if (!foundMatch) {
+                    return false;
+                }
+            }
+
+            // If we've matched all non-empty ingredients, the recipe matches
+            return remainingIngredients.isEmpty();
+        } else {
+            // For shaped recipes, use the existing logic
+            for (int i = 0; i < 9; i++) {
+                Ingredient ingredient = this.getIngredients().get(i);
+                ItemStack itemStack = inventory.getItem(i);
+
+                if (!ingredient.test(itemStack)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
     @Override
@@ -79,9 +131,12 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
         return this.inputItems;
     }
 
-    // Getter for the Fate Core ingredient
     public Ingredient getFateCore() {
         return this.fateCore;
+    }
+
+    public boolean isShapeless() {
+        return this.isShapeless;
     }
 
     @Override
@@ -136,7 +191,10 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
                 fateCore = Ingredient.fromJson(json.get("fate_core"));
             }
 
-            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore);
+            // Check if this is a shapeless recipe
+            boolean isShapeless = GsonHelper.getAsBoolean(json, "shapeless", false);
+
+            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore, isShapeless);
         }
 
         @Override
@@ -156,7 +214,10 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
             // Read the output item
             ItemStack output = buf.readItem();
 
-            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore);
+            // Read the shapeless flag
+            boolean isShapeless = buf.readBoolean();
+
+            return new ForgeOfKnowledgeRecipe(id, output, inputs, fateCore, isShapeless);
         }
 
         @Override
@@ -174,6 +235,9 @@ public class ForgeOfKnowledgeRecipe implements Recipe<SimpleContainer> {
 
             // Write the output item
             buf.writeItemStack(recipe.getResultItem(null), false);
+
+            // Write the shapeless flag
+            buf.writeBoolean(recipe.isShapeless());
         }
     }
 }

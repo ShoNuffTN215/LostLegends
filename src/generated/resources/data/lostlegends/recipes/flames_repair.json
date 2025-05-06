@@ -5,31 +5,31 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:pure_prismarine"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:prismarine_alloy"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:pure_prismarine"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:prismarine_alloy"
     },
     {
       "item": "lostlegends:ruined_flames_of_creation"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:prismarine_alloy"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:pure_prismarine"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:prismarine_alloy"
     },
     {
-      "item": "minecraft:netherite_ingot"
+      "item": "lostlegends:pure_prismarine"
     }
   ],
   "output": {

@@ -1,37 +1,13 @@
 {
-  "item.lostlegends.fate_core": "Fate Core",
   "item.lostlegends.unobtanium": "Unobtanium",
   "item.lostlegends.raw_unobtanium": "Raw Unobtanium",
 
   "item.lostlegends.metal_detector": "Unobtanium Detector",
   "item.lostlegends.lightning_staff": "Lightning Staff",
-  "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
-  "entity.lostlegends.lava_fireball": "Lava Fireball",
 
-  "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
-  "item.lostlegends.flames_of_creation": "The Flames of Creation",
-  "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
-  "item.lostlegends.lute": "Lute",
   "tooltip.lostlegends.lute_tooltip.shift": "Right-click on a block to summon Allays that will harvest similar blocks",
 
-  "item.lostlegends.ruined_flames_of_creation": "Ruined Flames of Creation",
-
-  "effect.lostlegends.king_of_the_nether": "King of the Nether",
-
-  "effect.lostlegends.fungal_acid": "Fungal Acid",
-  "effect.lostlegends.stun": "Stunned",
-
   "item.lostlegends.sculkberry": "Sculkberry",
-
-  "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
-  "item.lostlegends.grindstone_golem_spawn_egg": "Grindstone Golem Spawn Egg",
-  "item.lostlegends.plank_golem_spawn_egg": "Plank Golem Spawn Egg",
-  "item.lostlegends.capybara_spawn_egg": "Capybara Spawn Egg",
-
-  "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
-  "entity.lostlegends.grindstone_golem": "Grindstone Golem",
-  "entity.geckolib.plank_golem": "Plank Golem",
-  "entity.lostlegends.capybara": "Capybara",
 
   "item.lostlegends.unobtanium_waste": "Unobtanium Waste",
 
@@ -48,13 +24,9 @@
   "item.lostlegends.unobtanium_leggings": "Unobtanium Leggings",
   "item.lostlegends.unobtanium_boots": "Unobtanium Boots",
 
-  "item.lostlegends.great_hogs_crown": "The Great Hog's Crown",
-  "item.lostlegends.beast_mask": "The Beast's Mask",
-
   "block.lostlegends.raw_unobtanium_block": "Block of Raw Unobtanium",
   "block.lostlegends.unobtanium_block": "Block of Unobtanium",
   "block.lostlegends.unobtanium_ore": "Unobtanium Ore",
-  "block.lostlegends.custom_test_block": "Test Block",
   "block.lostlegends.sculk_brick": "Sculk Brick",
   "block.lostlegends.sculk_brick_stairs": "Sculk Brick Stairs",
   "block.lostlegends.sculk_brick_slab": "Sculk Brick Slab",
@@ -66,6 +38,44 @@
   "block.lostlegends.sculk_brick_door": "Sculk Brick Door",
   "block.lostlegends.sculk_brick_trap_door": "Sculk Brick Trap Door",
 
+  "block.lostlegends.sound_block": "Sound Block",
+
+  "tooltip.lostlegends.metal_detector_tooltip.shift": "Locates valuables underground",
+  "tooltip.lostlegends.lightning_staff_tooltip.shift": "Summons lightning at the user's will",
+
+
+
+  "item.lostlegends.fate_core": "Fate Core",
+  "item.lostlegends.pure_prismarine": "Pure Prismarine",
+  "item.lostlegends.prismarine_alloy": "Prismarine Alloy",
+
+  "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
+  "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
+  "item.lostlegends.flames_of_creation": "The Flames of Creation",
+  "item.lostlegends.flames_of_creation.summon_success": "Summoned a golem",
+  "item.lostlegends.lute": "Lute",
+
+  "item.lostlegends.ruined_flames_of_creation": "Ruined Flames of Creation",
+
+  "effect.lostlegends.king_of_the_nether": "King of the Nether",
+  "effect.lostlegends.fungal_acid": "Fungal Acid",
+  "effect.lostlegends.stun": "Stunned",
+
+  "item.lostlegends.cobblestone_golem_spawn_egg": "Cobblestone Golem Spawn Egg",
+  "item.lostlegends.grindstone_golem_spawn_egg": "Grindstone Golem Spawn Egg",
+  "item.lostlegends.plank_golem_spawn_egg": "Plank Golem Spawn Egg",
+  "item.lostlegends.capybara_spawn_egg": "Capybara Spawn Egg",
+
+  "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
+  "entity.lostlegends.grindstone_golem": "Grindstone Golem",
+  "entity.geckolib.plank_golem": "Plank Golem",
+  "entity.lostlegends.capybara": "Capybara",
+
+  "entity.lostlegends.lava_fireball": "Lava Fireball",
+
+  "item.lostlegends.great_hogs_crown": "The Great Hog's Crown",
+  "item.lostlegends.beast_mask": "The Beast's Mask",
+
   "block.lostlegends.forge_of_knowledge": "Forge of Knowledge",
   "tooltip.lostlegends.forge_of_knowledge.line1": "Ancient wisdom awaits...",
   "tooltip.lostlegends.forge_of_knowledge.line2": "Right-click to access crafting interface. Takes 5 seconds to craft an item.",
@@ -74,11 +84,6 @@
   "painting.lostlegends.unbreakables_fury.author": "Minecraft Legends",
   "painting.lostlegends.cat.title": "Cat",
   "painting.lostlegends.cat.author": "JDMeisch22",
-
-  "block.lostlegends.sound_block": "Sound Block",
-
-  "tooltip.lostlegends.metal_detector_tooltip.shift": "Locates valuables underground",
-  "tooltip.lostlegends.lightning_staff_tooltip.shift": "Summons lightning at the user's will",
 
   "creativetab.unobtanium_tab": "Unobtanium",
   "creativetab.lost_legends_tab": "Lost Legends"

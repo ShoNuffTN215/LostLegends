@@ -42,16 +42,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.UNOBTANIUM_LEGGING);
         simpleItem(ModItems.UNOBTANIUM_BOOTS);
 
-        simpleItem(ModItems.FORGE_OF_KNOWLEDGE_ICON);
-
-        simpleItem(ModItems.GREAT_HOGS_CROWN);
-        simpleItem(ModItems.BEAST_MASK);
-
         buttonItem(ModBlocks.SCULK_BRICK_BUTTON, ModBlocks.SCULK_BRICK);
         fenceItem(ModBlocks.SCULK_BRICK_FENCE, ModBlocks.SCULK_BRICK);
         wallItem(ModBlocks.SCULK_BRICK_WALL, ModBlocks.SCULK_BRICK);
 
         simpleBlockItem(ModBlocks.SCULK_BRICK_DOOR);
+
+
+        simpleItem(ModItems.GREAT_HOGS_CROWN);
+        simpleItem(ModItems.BEAST_MASK);
+
+        simpleItem(ModItems.FORGE_OF_KNOWLEDGE_ICON);
+
+        simpleItem(ModItems.FATE_CORE);
+        simpleItem(ModItems.PURE_PRISMARINE);
+        simpleItem(ModItems.PRISMARINE_ALLOY);
 
         withExistingParent(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.GRINDSTONE_GOLEM_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

@@ -77,6 +77,8 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.FATE_CORE.get()))
                     .title(Component.translatable("creativetab.lost_legends_tab")).displayItems((displayParameters, output) -> {
                         output.accept(ModItems.FATE_CORE.get());
+                        output.accept(ModItems.PURE_PRISMARINE.get());
+                        output.accept(ModItems.PRISMARINE_ALLOY.get());
 
                         output.accept(ModItems.UNBREAKABLES_GAUNTLET.get());
                         output.accept(ModItems.DEVOURERS_PUSTULE.get());
@@ -88,7 +90,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COBBLESTONE_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.GRINDSTONE_GOLEM_SPAWN_EGG.get());
                         output.accept(ModItems.PLANK_GOLEM_SPAWN_EGG.get());
-
                         output.accept(ModItems.CAPYBARA_SPAWN_EGG.get());
 
                         output.accept(ModItems.GREAT_HOGS_CROWN.get());

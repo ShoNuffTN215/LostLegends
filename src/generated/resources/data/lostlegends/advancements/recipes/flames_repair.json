@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lostlegends:flames_repair"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "ruined_flames_of_creation": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lostlegends:ruined_flames_of_creation"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "ruined_flames_of_creation",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lostlegends:flames_repair"
+    ]
+  },
+  "sends_telemetry_event": true
+}

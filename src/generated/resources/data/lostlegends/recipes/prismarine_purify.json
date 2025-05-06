@@ -1,0 +1,23 @@
+{
+  "type": "lostlegends:forge_knowledge",
+  "fate_core": {
+    "item": "lostlegends:fate_core"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "output": {
+    "item": "lostlegends:pure_prismarine"
+  },
+  "shapeless": true
+}

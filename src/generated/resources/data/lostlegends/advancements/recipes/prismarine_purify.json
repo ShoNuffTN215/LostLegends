@@ -1,12 +1,11 @@
 {
-  "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ruined_flames_of_creation": {
+    "has_diamond": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:netherite_ingot"
+              "minecraft:diamond"
             ]
           }
         ]
@@ -15,20 +14,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "lostlegends:flames_of_creation_repair"
+        "recipe": "lostlegends:prismarine_purify"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ruined_flames_of_creation",
+      "has_diamond",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "lostlegends:flames_of_creation_repair"
+      "lostlegends:prismarine_purify"
     ]
   },
   "sends_telemetry_event": true

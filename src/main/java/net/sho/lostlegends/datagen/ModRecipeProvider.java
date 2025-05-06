@@ -14,6 +14,7 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.block.ModBlocks;
 import net.sho.lostlegends.datagen.custom.ForgeOfKnowledgeRecipeBuilder;
+import net.sho.lostlegends.datagen.custom.ForgeOfKnowledgeShapelessRecipeBuilder;
 import net.sho.lostlegends.item.ModItems;
 
 import java.util.List;
@@ -81,20 +82,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     // New method for Forge of Knowledge recipes
     private void buildForgeOfKnowledgeRecipes(Consumer<FinishedRecipe> pWriter) {
-        ForgeOfKnowledgeRecipeBuilder.forgeOfKnowledge(ModItems.FLAMES_OF_CREATION.get(), 1)
-                .setIngredient(0, Items.NETHERITE_INGOT)  // Top-left
-                .setIngredient(1, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(2, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(3, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(4, ModItems.RUINED_FLAMES_OF_CREATION.get())  // Top-middle
-                .setIngredient(5, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(6, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(7, Items.NETHERITE_INGOT)  // Top-middle
-                .setIngredient(8, Items.NETHERITE_INGOT)  // Top-middle
+        ForgeOfKnowledgeRecipeBuilder.forgeOfKnowledge(ModItems.PRISMARINE_ALLOY.get(), 1)
+                .setIngredient(0, ModItems.PURE_PRISMARINE.get())  // Top-left
+                .setIngredient(1, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(2, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(3, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(4, Items.IRON_INGOT)  // Top-middle
+                .setIngredient(5, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(6, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(7, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(8, ModItems.PURE_PRISMARINE.get())  // Top-middle
                 .setFateCore(ModItems.FATE_CORE.get())  // Specify the Fate Core
-                .unlockedBy("has_ruined_flames_of_creation", inventoryTrigger(ItemPredicate.Builder.item()
-                        .of(Items.NETHERITE_INGOT).build()))
-                .save(pWriter, new ResourceLocation(LostLegendsMod.MODID, "flames_of_creation_repair"));
+                .unlockedBy("has_pure_prismarine", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(ModItems.PURE_PRISMARINE.get()).build()))
+                .save(pWriter, new ResourceLocation(LostLegendsMod.MODID, "prismarine_alloy"));
+
+        ForgeOfKnowledgeRecipeBuilder.forgeOfKnowledge(ModItems.FLAMES_OF_CREATION.get(), 1)
+                .setIngredient(0, ModItems.PURE_PRISMARINE.get())  // Top-left
+                .setIngredient(1, ModItems.PRISMARINE_ALLOY.get())  // Top-middle
+                .setIngredient(2, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(3, ModItems.PRISMARINE_ALLOY.get())  // Top-middle
+                .setIngredient(4, ModItems.RUINED_FLAMES_OF_CREATION.get())  // Top-middle
+                .setIngredient(5, ModItems.PRISMARINE_ALLOY.get())  // Top-middle
+                .setIngredient(6, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setIngredient(7, ModItems.PRISMARINE_ALLOY.get())  // Top-middle
+                .setIngredient(8, ModItems.PURE_PRISMARINE.get())  // Top-middle
+                .setFateCore(ModItems.FATE_CORE.get())  // Specify the Fate Core
+                .unlockedBy("ruined_flames_of_creation", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(ModItems.RUINED_FLAMES_OF_CREATION.get()).build()))
+                .save(pWriter, new ResourceLocation(LostLegendsMod.MODID, "flames_repair"));
+
+        ForgeOfKnowledgeShapelessRecipeBuilder.shapeless(ModItems.PURE_PRISMARINE.get())
+                .requires(Items.PRISMARINE_SHARD)
+                .setFateCore(ModItems.FATE_CORE.get())  // Explicitly set the Fate Core
+                .unlockedBy("has_diamond", has(Items.DIAMOND))
+                .save(pWriter, new ResourceLocation(LostLegendsMod.MODID, "prismarine_purify"));
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
