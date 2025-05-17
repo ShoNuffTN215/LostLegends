@@ -1,5 +1,6 @@
-// 1.20.1	2025-05-06T19:05:11.0770459	Recipes
+// 1.20.1	2025-05-07T17:29:18.9357403	Recipes
 e4a3093caafebf844ecc66719473575aa1181c83 data/lostlegends/advancements/recipes/flames_repair.json
+7114a001ed2e49b71ebabc5199355f4aa2b23e4d data/lostlegends/advancements/recipes/misc/forge_of_knowledge.json
 55d63e88a4fc158a4f7a9f4451aff330efbda87b data/lostlegends/advancements/recipes/misc/raw_unobtanium_block.json
 e7f064a67104ee728804d05034504853a9bc1443 data/lostlegends/advancements/recipes/misc/sculk_brick_slab.json
 700f5100cc1810e1a9a6ab5148a7bf62407154ed data/lostlegends/advancements/recipes/misc/sculk_brick_stairs.json
@@ -12,6 +13,7 @@ e88056f221372a04f6dd68db7aeafddcf1f51a11 data/lostlegends/advancements/recipes/m
 2deebea9fb7042cf1b9b63effcd9888894c585eb data/lostlegends/advancements/recipes/prismarine_alloy.json
 7a5cd2f306d195e669c607ae8ce7f154f5be0c00 data/lostlegends/advancements/recipes/prismarine_purify.json
 4e32634a91699a0ff08d2287f1a1066a08ec5bbd data/lostlegends/recipes/flames_repair.json
+0bddec88c55dbcfb220377a492332f633431c131 data/lostlegends/recipes/forge_of_knowledge.json
 724f8f71fa3ff4f61af3be089f948ab0487ba309 data/lostlegends/recipes/prismarine_alloy.json
 ff9b8b0fa894afb41382d05fd8e25793d8697131 data/lostlegends/recipes/prismarine_purify.json
 24757bc897137ff1896360c5ada85b0a696bcce9 data/lostlegends/recipes/raw_unobtanium_block.json

@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:oak_planks"
+    },
+    "B": {
+      "item": "minecraft:crafting_table"
+    },
+    "C": {
+      "item": "lostlegends:fate_core"
+    },
+    "D": {
+      "item": "minecraft:blast_furnace"
+    },
+    "E": {
+      "item": "minecraft:book"
+    },
+    "F": {
+      "item": "lostlegends:creation_chip"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCD",
+    "EFE"
+  ],
+  "result": {
+    "item": "lostlegends:forge_of_knowledge"
+  },
+  "show_notification": true
+}

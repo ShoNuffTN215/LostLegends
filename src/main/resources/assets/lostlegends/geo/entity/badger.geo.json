@@ -1,0 +1,101 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.badger",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "Badger",
+					"pivot": [0, 2, 0],
+					"rotation": [0, -90, 0]
+				},
+				{
+					"name": "Body",
+					"parent": "Badger",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "Torso",
+					"parent": "Body",
+					"pivot": [0, -0.3, 0],
+					"rotation": [0, 0, 2.5],
+					"cubes": [
+						{"origin": [-1, 1.7, -3], "size": [7, 4, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Legs",
+					"parent": "Body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "bone",
+					"parent": "Legs",
+					"pivot": [0, 2, 0],
+					"cubes": [
+						{"origin": [-0.5, 0, -2.5], "size": [1.5, 2, 1.5], "uv": [12, 17]}
+					]
+				},
+				{
+					"name": "bone2",
+					"parent": "Legs",
+					"pivot": [5, 2, 0],
+					"cubes": [
+						{"origin": [4, 0, -2.5], "size": [1.5, 2, 1.5], "uv": [4, 18]}
+					]
+				},
+				{
+					"name": "bone3",
+					"parent": "Legs",
+					"pivot": [0, 2, 0],
+					"cubes": [
+						{"origin": [-0.5, 0, 1], "size": [1.5, 2, 1.5], "uv": [16, 17]}
+					]
+				},
+				{
+					"name": "bone4",
+					"parent": "Legs",
+					"pivot": [5, 2, 0],
+					"cubes": [
+						{"origin": [4, 0, 1], "size": [1.5, 2, 1.5], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "Tail",
+					"parent": "Body",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [6, 3.7, -1.25], "size": [3, 1, 2.5], "pivot": [7, 2.7, 0], "rotation": [0, 0, 5], "uv": [1, 15]}
+					]
+				},
+				{
+					"name": "Head",
+					"parent": "Badger",
+					"pivot": [2, 0.7, 0],
+					"rotation": [0, 0, -20],
+					"cubes": [
+						{"origin": [-5, 4.7, -1], "size": [6, 2, 2], "uv": [0, 10]},
+						{"origin": [-3.5, 4.7, -2.5], "size": [4.5, 2, 1.5], "uv": [12, 14]},
+						{"origin": [-3.5, 4.7, 1], "size": [4.5, 2, 1.5], "uv": [16, 10]}
+					]
+				},
+				{
+					"name": "Ears",
+					"parent": "Head",
+					"pivot": [2, 0.7, 0],
+					"cubes": [
+						{"origin": [-0.5, 6.7, 1], "size": [1.5, 1.5, 1.5], "uv": [8, 18]},
+						{"origin": [-0.5, 6.7, -2.5], "size": [1.5, 1.5, 1.5], "uv": [8, 20]}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,8 +1,15 @@
 package net.sho.lostlegends.item;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -10,6 +17,8 @@ import net.sho.lostlegends.LostLegendsMod;
 import net.sho.lostlegends.entity.ModEntities;
 import net.sho.lostlegends.item.custom.*;
 import net.sho.lostlegends.registry.EntityRegistry;
+
+import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -56,6 +65,9 @@ public class ModItems {
     public static final RegistryObject<Item> UNOBTANIUM_WASTE = ITEMS.register("unobtanium_waste",
             () -> new FuelItem(new Item.Properties(), 2000));
 
+
+
+
     // Armor Items
     public static final RegistryObject<Item> GREAT_HOGS_CROWN = ITEMS.register("great_hogs_crown",
             () -> new GreatHogsCrownItem(ModArmorMaterials.ROYAL, new Item.Properties()));
@@ -72,9 +84,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(EntityRegistry.PLANK_GOLEM, 0xC7A06D, 0x8B5A2B, new Item.Properties()));
     public static final RegistryObject<Item> CAPYBARA_SPAWN_EGG = ITEMS.register("capybara_spawn_egg",
             () -> new ForgeSpawnEggItem(EntityRegistry.CAPYBARA, 0x8B6D3F, 0x5C4A32, new Item.Properties()));
+    public static final RegistryObject<Item> BADGER_SPAWN_EGG = ITEMS.register("badger_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityRegistry.BADGER, 0x3B3635, 0xF0F0F0, new Item.Properties()));
 
     //Repairable Items
-
     public static final RegistryObject<Item> RUINED_FLAMES_OF_CREATION = ITEMS.register("ruined_flames_of_creation",
             () -> new Item(new Item.Properties().stacksTo(1).stacksTo(1)));
 
@@ -96,24 +109,12 @@ public class ModItems {
             () -> new Item(new Item.Properties().stacksTo(64)));
     public static final RegistryObject<Item> PRISMARINE_ALLOY = ITEMS.register("prismarine_alloy",
             () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> CREATION_CHIP = ITEMS.register("creation_chip",
+            () -> new Item(new Item.Properties().stacksTo(64)));
 
     // Block Entity Icons
     public static final RegistryObject<Item> FORGE_OF_KNOWLEDGE_ICON = ITEMS.register("forge_of_knowledge_icon",
             () -> new Item(new Item.Properties()));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

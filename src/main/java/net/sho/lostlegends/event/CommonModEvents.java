@@ -5,6 +5,7 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.sho.lostlegends.LostLegendsMod;
+import net.sho.lostlegends.entity.BadgerEntity;
 import net.sho.lostlegends.entity.CapybaraEntity;
 import net.sho.lostlegends.entity.GrindstoneGolemEntity;
 import net.sho.lostlegends.entity.PlankGolemEntity;
@@ -19,5 +20,6 @@ public class CommonModEvents {
         event.put(EntityRegistry.GRINDSTONE_GOLEM.get(), GrindstoneGolemEntity.createAttributes().build());
         event.put(PLANK_GOLEM.get(), PlankGolemEntity.createAttributes().build());
         event.put(EntityRegistry.CAPYBARA.get(), CapybaraEntity.createAttributes().build());
+        event.put(EntityRegistry.BADGER.get(), BadgerEntity.createAttributes().build());
     }
 }

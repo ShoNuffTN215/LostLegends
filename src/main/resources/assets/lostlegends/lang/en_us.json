@@ -48,6 +48,7 @@
   "item.lostlegends.fate_core": "Fate Core",
   "item.lostlegends.pure_prismarine": "Pure Prismarine",
   "item.lostlegends.prismarine_alloy": "Prismarine Alloy",
+  "item.lostlegends.creation_chip": "Creation Chip",
 
   "item.lostlegends.unbreakables_gauntlet": "The Unbreakable's Gauntlet",
   "item.lostlegends.devourers_pustule": "The Devourer's Pustule",
@@ -65,11 +66,13 @@
   "item.lostlegends.grindstone_golem_spawn_egg": "Grindstone Golem Spawn Egg",
   "item.lostlegends.plank_golem_spawn_egg": "Plank Golem Spawn Egg",
   "item.lostlegends.capybara_spawn_egg": "Capybara Spawn Egg",
+  "item.lostlegends.badger_spawn_egg": "Badger Spawn Egg",
 
   "entity.lostlegends.cobblestone_golem": "Cobblestone Golem",
   "entity.lostlegends.grindstone_golem": "Grindstone Golem",
   "entity.geckolib.plank_golem": "Plank Golem",
   "entity.lostlegends.capybara": "Capybara",
+  "entity.lostlegends.badger": "Badger",
 
   "entity.lostlegends.lava_fireball": "Lava Fireball",
 

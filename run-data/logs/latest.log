@@ -1,34 +1,36 @@
-[06May2025 19:05:05.313] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\shonu\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.1.30, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, lostlegends, --all, --output, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\generated\resources, --existing, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\main\resources]
-[06May2025 19:05:05.320] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.13 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[06May2025 19:05:05.414] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[06May2025 19:05:05.446] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/shonu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[06May2025 19:05:05.645] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.1.30\4d4d0a80501e2e9aa48fc6e933677dd93463f39b\javafmllanguage-1.20.1-47.1.30.jar is missing mods.toml file
-[06May2025 19:05:05.648] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.1.30\8acf4742e3cd1689d59b70bfc1cd2649701f0813\lowcodelanguage-1.20.1-47.1.30.jar is missing mods.toml file
-[06May2025 19:05:05.650] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.1.30\5498b88cec72cca4fe89809b82d1e3b9560c2c3\mclanguage-1.20.1-47.1.30.jar is missing mods.toml file
-[06May2025 19:05:05.651] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.1.30\3b1e3ffb1449cc410d8baf64656b815fd6326930\fmlcore-1.20.1-47.1.30.jar is missing mods.toml file
-[06May2025 19:05:05.749] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[06May2025 19:05:06.734] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[06May2025 19:05:06.735] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\shonu\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, lostlegends, --all, --output, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\generated\resources, --existing, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\main\resources]
-[06May2025 19:05:06.933] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\build\createSrgToMcp\output.srg
-[06May2025 19:05:07.185] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [lostlegends]
-[06May2025 19:05:10.015] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.1.30, for MC 1.20.1 with MCP 20230612.114412
-[06May2025 19:05:10.016] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.1.30 Initialized
-[06May2025 19:05:10.079] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[06May2025 19:05:10.208] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[06May2025 19:05:10.221] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 6.121 ms
-[06May2025 19:05:10.602] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/shonu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1/forge-1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[06May2025 19:05:10.603] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/shonu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1/forge-1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[06May2025 19:05:10.813] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[06May2025 19:05:10.887] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 73 ms
-[06May2025 19:05:10.887] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[06May2025 19:05:10.926] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 39 ms
-[06May2025 19:05:10.926] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block Tags
-[06May2025 19:05:10.957] [main/INFO] [net.minecraft.data.DataGenerator/]: Block Tags finished after 29 ms
-[06May2025 19:05:10.957] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: lostlegends
-[06May2025 19:05:10.979] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: lostlegends finished after 23 ms
-[06May2025 19:05:10.979] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: lostlegends
-[06May2025 19:05:11.074] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: lostlegends finished after 93 ms
-[06May2025 19:05:11.074] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:painting_variant mod id lostlegends
-[06May2025 19:05:11.075] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:painting_variant mod id lostlegends finished after 1 ms
-[06May2025 19:05:11.075] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 263 ms
-[06May2025 19:05:11.086] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 133, old count: 133, new count: 134, removed stale: 0, written: 2
+[16May2025 22:02:50.697] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\shonu\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.1.30, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, lostlegends, --all, --output, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\generated\resources, --existing, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\main\resources]
+[16May2025 22:02:50.701] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.13 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[16May2025 22:02:50.786] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[16May2025 22:02:50.815] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/shonu/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[16May2025 22:02:50.986] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.1.30\4d4d0a80501e2e9aa48fc6e933677dd93463f39b\javafmllanguage-1.20.1-47.1.30.jar is missing mods.toml file
+[16May2025 22:02:50.989] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.1.30\8acf4742e3cd1689d59b70bfc1cd2649701f0813\lowcodelanguage-1.20.1-47.1.30.jar is missing mods.toml file
+[16May2025 22:02:50.991] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.1.30\5498b88cec72cca4fe89809b82d1e3b9560c2c3\mclanguage-1.20.1-47.1.30.jar is missing mods.toml file
+[16May2025 22:02:50.992] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\shonu\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.1.30\3b1e3ffb1449cc410d8baf64656b815fd6326930\fmlcore-1.20.1-47.1.30.jar is missing mods.toml file
+[16May2025 22:02:51.073] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[16May2025 22:02:51.912] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[16May2025 22:02:51.914] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\shonu\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, lostlegends, --all, --output, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\generated\resources, --existing, C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\src\main\resources]
+[16May2025 22:02:52.077] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\shonu\Downloads\forge-1.20.1-47.1.30-mdk\build\createSrgToMcp\output.srg
+[16May2025 22:02:52.297] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [lostlegends]
+[16May2025 22:02:54.440] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.1.30, for MC 1.20.1 with MCP 20230612.114412
+[16May2025 22:02:54.441] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.1.30 Initialized
+[16May2025 22:02:54.492] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[16May2025 22:02:54.581] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[16May2025 22:02:54.585] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 2.221 ms
+[16May2025 22:02:54.810] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/shonu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1/forge-1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[16May2025 22:02:54.810] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/shonu/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1/forge-1.20.1-47.1.30_mapped_parchment_1.19.3-2023.03.12-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[16May2025 22:02:54.926] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[16May2025 22:02:54.957] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 30 ms
+[16May2025 22:02:54.957] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[16May2025 22:02:54.988] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 30 ms
+[16May2025 22:02:54.988] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block Tags
+[16May2025 22:02:55.039] [main/INFO] [net.minecraft.data.DataGenerator/]: Block Tags finished after 49 ms
+[16May2025 22:02:55.039] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: lostlegends
+[16May2025 22:02:55.049] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: lostlegends finished after 10 ms
+[16May2025 22:02:55.049] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: lostlegends
+[16May2025 22:02:55.130] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: lostlegends finished after 80 ms
+[16May2025 22:02:55.130] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:painting_variant mod id lostlegends
+[16May2025 22:02:55.131] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:painting_variant mod id lostlegends finished after 0 ms
+[16May2025 22:02:55.131] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : lostlegends
+[16May2025 22:02:55.134] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : lostlegends finished after 3 ms
+[16May2025 22:02:55.134] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 207 ms
+[16May2025 22:02:55.143] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 139, old count: 138, new count: 140, removed stale: 0, written: 1
